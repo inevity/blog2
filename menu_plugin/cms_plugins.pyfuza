@@ -1,0 +1,33 @@
+from cms.plugin_base import CMSPluginBase
+from cms.plugin_pool import plugin_pool
+from cms.models.pluginmodel import CMSPlugin
+from django.utils.translation import ugettext_lazy as _
+
+from blog2.models import Category, CategoryExtension
+from cms.models import Title
+
+#from .models import MaxEntries
+from .models import MaxEntries
+
+
+
+class MenuPlugin(CMSPluginBase):
+    model = MaxEntries
+    #model = CMSPlugin
+    name = _("Menu Plugin")
+    render_template = "menu_plugin.html"
+    cache = False
+    def render(self, context, instance, placeholder):
+      categoryID = Category.objects.get(category='kernel')
+      posts = CategoryExtension.objects.filter(category_id=categoryID)
+      blogposts = []
+      for post in posts:
+        if not Title.objects.get(page_id=post.extended_object_id).publisher_is_draft:
+          anchor = ((Title.objects.get(page_id=post.extended_object_id).title),)
+          anchor += ((Title.objects.get(page_id=post.extended_object_id).path),)
+        blogposts.append(anchor)
+      context['instance'] = instance
+      context['blogposts'] = blogposts
+      return context
+
+plugin_pool.register_plugin(MenuPlugin)

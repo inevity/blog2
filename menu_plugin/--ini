@@ -1,0 +1,408 @@
+*** Starting uWSGI 2.0.12 (64bit) on [Sun May  8 17:11:02 2016] ***
+compiled with version: 4.7.2 on 05 May 2016 03:37:02
+os: Linux-3.2.0-4-amd64 #1 SMP Debian 3.2.54-2
+nodename: roidinev
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /root/blog2/menu_plugin
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /root/blog2
+your processes number limit is 3882
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /root/blog2/blog2.sock fd 3
+Python version: 2.7.3 (default, Mar 13 2014, 11:26:58)  [GCC 4.7.2]
+Set PythonHome to /root/Env/blog2
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x86bf50
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 436608 bytes (426 KB) for 5 cores
+*** Operational MODE: preforking ***
+/root/Env/blog2/local/lib/python2.7/site-packages/south/modelsinspector.py:20: RemovedInDjango19Warning: django.contrib.contenttypes.generic is deprecated and will be removed in Django 1.9. Its contents have been moved to the fields, forms, and admin submodules of django.contrib.contenttypes.
+  from django.contrib.contenttypes import generic
+
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x86bf50 pid: 7900 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 7900)
+spawned uWSGI worker 1 (pid: 7905, cores: 1)
+spawned uWSGI worker 2 (pid: 7906, cores: 1)
+spawned uWSGI worker 3 (pid: 7907, cores: 1)
+spawned uWSGI worker 4 (pid: 7908, cores: 1)
+spawned uWSGI worker 5 (pid: 7909, cores: 1)
+   New revision!!!! RELOAD!
+      cafaaf88-fc10-4993-9069-c66bc88717e8 (<type 'unicode'>)
+   -> None (<type 'NoneType'>)
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+[pid: 7905|app: 0|req: 1/1] 107.170.0.159 () {42 vars in 807 bytes} [Sun May  8 17:11:08 2016] GET /en/ => generated 17491 bytes in 797 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+   New revision!!!! RELOAD!
+      cafaaf88-fc10-4993-9069-c66bc88717e8 (<type 'unicode'>)
+   -> None (<type 'NoneType'>)
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+[pid: 7908|app: 0|req: 1/2] 107.170.0.159 () {44 vars in 862 bytes} [Sun May  8 17:11:12 2016] GET /en/?edit => generated 43199 bytes in 1126 msecs (HTTP/1.1 200) 9 headers in 526 bytes (1 switches on core 0)
+   New revision!!!! RELOAD!
+      cafaaf88-fc10-4993-9069-c66bc88717e8 (<type 'unicode'>)
+   -> None (<type 'NoneType'>)
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+[pid: 7909|app: 0|req: 1/3] 107.170.0.159 () {42 vars in 1059 bytes} [Sun May  8 17:11:13 2016] GET /media/filer_public_thumbnails/filer_public/a0/4d/a04d39d2-4652-4daf-8530-d6fcd69895e9/black-hole.jpg__700x200_q85_crop_subsampling-2_upscale.jpg => generated 40391 bytes in 159 msecs via sendfile() (HTTP/1.1 200) 8 headers in 299 bytes (0 switches on core 0)
+[pid: 7908|app: 0|req: 2/4] 107.170.0.159 () {44 vars in 946 bytes} [Sun May  8 17:11:19 2016] GET /en/squid-access-log-parse-and-spark-processing/ => generated 40071 bytes in 362 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+[pid: 7908|app: 0|req: 3/5] 107.170.0.159 () {44 vars in 992 bytes} [Sun May  8 17:37:54 2016] GET /en/admin/cms/page/18/advanced-settings/?language=en => generated 13068 bytes in 176 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+[pid: 7909|app: 0|req: 2/6] 107.170.0.159 () {42 vars in 821 bytes} [Sun May  8 17:37:54 2016] GET /en/admin/jsi18n/ => generated 2372 bytes in 44 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+[pid: 7908|app: 0|req: 4/7] 107.170.0.159 () {44 vars in 956 bytes} [Sun May  8 17:38:15 2016] GET /en/admin/cms/page/18/?language=en => generated 9835 bytes in 131 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+[pid: 7909|app: 0|req: 3/8] 107.170.0.159 () {42 vars in 803 bytes} [Sun May  8 17:38:15 2016] GET /en/admin/jsi18n/ => generated 2372 bytes in 29 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+[pid: 7908|app: 0|req: 5/9] 107.170.0.159 () {44 vars in 952 bytes} [Sun May  8 17:38:25 2016] GET /en/admin/cms/page/18/?language=zh-hans => generated 9751 bytes in 121 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+[pid: 7909|app: 0|req: 4/10] 107.170.0.159 () {42 vars in 808 bytes} [Sun May  8 17:38:25 2016] GET /en/admin/jsi18n/ => generated 2372 bytes in 34 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+[pid: 7908|app: 0|req: 6/11] 107.170.0.159 () {44 vars in 947 bytes} [Sun May  8 17:38:27 2016] GET /en/admin/cms/page/18/?language=en => generated 9835 bytes in 209 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+[pid: 7909|app: 0|req: 5/12] 107.170.0.159 () {42 vars in 803 bytes} [Sun May  8 17:38:27 2016] GET /en/admin/jsi18n/ => generated 2372 bytes in 25 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+[pid: 7908|app: 0|req: 7/13] 107.170.0.159 () {44 vars in 897 bytes} [Sun May  8 17:38:33 2016] GET /en/ => generated 43199 bytes in 400 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+[pid: 7909|app: 0|req: 6/14] 107.170.0.159 () {42 vars in 1054 bytes} [Sun May  8 17:38:34 2016] GET /media/filer_public_thumbnails/filer_public/a0/4d/a04d39d2-4652-4daf-8530-d6fcd69895e9/black-hole.jpg__700x200_q85_crop_subsampling-2_upscale.jpg => generated 40391 bytes in 29 msecs via sendfile() (HTTP/1.1 200) 8 headers in 299 bytes (0 switches on core 0)
+[pid: 7908|app: 0|req: 8/15] 107.170.0.159 () {44 vars in 917 bytes} [Sun May  8 17:38:40 2016] GET /en/admin/blog2/categoryextension/1/ => generated 6503 bytes in 108 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+[pid: 7909|app: 0|req: 7/16] 107.170.0.159 () {42 vars in 805 bytes} [Sun May  8 17:38:41 2016] GET /en/admin/jsi18n/ => generated 2372 bytes in 42 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+[pid: 7908|app: 0|req: 9/17] 107.170.0.159 () {44 vars in 865 bytes} [Sun May  8 17:39:03 2016] GET /en/admin/ => generated 14690 bytes in 110 msecs (HTTP/1.1 200) 7 headers in 273 bytes (1 switches on core 0)
+/root/Env/blog2/local/lib/python2.7/site-packages/django/template/base.py:827: RemovedInDjango19Warning: `request.REQUEST` is deprecated, use `request.GET` or `request.POST` instead.
+  current = getattr(current, bit)
+
+/root/Env/blog2/local/lib/python2.7/site-packages/django/core/handlers/wsgi.py:126: RemovedInDjango19Warning: `MergeDict` is deprecated, use `dict.update()` instead.
+  self._request = datastructures.MergeDict(self.POST, self.GET)
+
+[pid: 7908|app: 0|req: 10/18] 107.170.0.159 () {44 vars in 928 bytes} [Sun May  8 17:39:23 2016] GET /en/admin/cms/page/?page_id=16&language=en => generated 8900 bytes in 203 msecs (HTTP/1.1 200) 9 headers in 526 bytes (1 switches on core 0)
+[pid: 7909|app: 0|req: 8/19] 107.170.0.159 () {46 vars in 977 bytes} [Sun May  8 17:39:23 2016] GET /en/admin/cms/page/get-tree/?language=en&pageId=&site=1 => generated 36928 bytes in 454 msecs (HTTP/1.1 200) 7 headers in 273 bytes (2 switches on core 0)
+[pid: 7908|app: 0|req: 11/20] 107.170.0.159 () {44 vars in 917 bytes} [Sun May  8 17:39:42 2016] GET /en/admin/blog2/categoryextension/1/ => generated 6503 bytes in 114 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+[pid: 7909|app: 0|req: 9/21] 107.170.0.159 () {42 vars in 805 bytes} [Sun May  8 17:39:42 2016] GET /en/admin/jsi18n/ => generated 2372 bytes in 38 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+[pid: 7908|app: 0|req: 12/22] 107.170.0.159 () {44 vars in 949 bytes} [Sun May  8 17:39:58 2016] GET /en/admin/cms/page/18/en/preview/ => generated 0 bytes in 38 msecs (HTTP/1.1 302) 8 headers in 379 bytes (1 switches on core 0)
+[pid: 7909|app: 0|req: 10/23] 107.170.0.159 () {44 vars in 1012 bytes} [Sun May  8 17:39:59 2016] GET /en/squid-access-log-parse-and-spark-processing/?edit&language=en => generated 40073 bytes in 809 msecs (HTTP/1.1 200) 9 headers in 526 bytes (1 switches on core 0)
+[pid: 7908|app: 0|req: 13/24] 107.170.0.159 () {44 vars in 989 bytes} [Sun May  8 17:40:00 2016] GET /en/admin/cms/page/?page_id=18&language=en => generated 8900 bytes in 208 msecs (HTTP/1.1 200) 9 headers in 526 bytes (1 switches on core 0)
+[pid: 7909|app: 0|req: 11/25] 107.170.0.159 () {46 vars in 977 bytes} [Sun May  8 17:40:01 2016] GET /en/admin/cms/page/get-tree/?language=en&pageId=&site=1 => generated 36928 bytes in 421 msecs (HTTP/1.1 200) 7 headers in 273 bytes (2 switches on core 0)
+[pid: 7908|app: 0|req: 14/26] 107.170.0.159 () {44 vars in 934 bytes} [Sun May  8 17:40:03 2016] GET /en/admin/cms/page/resolve/?model=cms.page&pk=18 => generated 48 bytes in 39 msecs (HTTP/1.1 200) 7 headers in 259 bytes (1 switches on core 0)
+[pid: 7909|app: 0|req: 12/27] 107.170.0.159 () {46 vars in 1066 bytes} [Sun May  8 17:40:03 2016] GET /en/squid-access-log-parse-and-spark-processing/?edit&language=en => generated 40073 bytes in 512 msecs (HTTP/1.1 200) 9 headers in 526 bytes (1 switches on core 0)
+[pid: 7908|app: 0|req: 15/28] 107.170.0.159 () {44 vars in 1002 bytes} [Sun May  8 17:40:08 2016] GET /en/squid-access-log-parse-and-spark-processing/ => generated 40071 bytes in 511 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+[pid: 7909|app: 0|req: 13/29] 107.170.0.159 () {44 vars in 961 bytes} [Sun May  8 17:40:11 2016] GET /en/admin/blog2/categoryextension/2/ => generated 6503 bytes in 100 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+[pid: 7908|app: 0|req: 16/30] 107.170.0.159 () {42 vars in 805 bytes} [Sun May  8 17:40:12 2016] GET /en/admin/jsi18n/ => generated 2372 bytes in 29 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+Sun May  8 17:41:45 2016 - uWSGI worker 1 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sun May  8 17:41:45 2016 - uWSGI worker 2 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sun May  8 17:41:45 2016 - uWSGI worker 3 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sun May  8 17:41:45 2016 - uWSGI worker 4 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sun May  8 17:41:45 2016 - uWSGI worker 5 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+*** Starting uWSGI 2.0.12 (64bit) on [Sun May  8 17:41:48 2016] ***
+compiled with version: 4.7.2 on 05 May 2016 03:37:02
+os: Linux-3.2.0-4-amd64 #1 SMP Debian 3.2.54-2
+nodename: roidinev
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /root/blog2/menu_plugin
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /root/blog2
+your processes number limit is 3882
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /root/blog2/blog2.sock fd 3
+Python version: 2.7.3 (default, Mar 13 2014, 11:26:58)  [GCC 4.7.2]
+Set PythonHome to /root/Env/blog2
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x7dff50
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 436608 bytes (426 KB) for 5 cores
+*** Operational MODE: preforking ***
+/root/Env/blog2/local/lib/python2.7/site-packages/south/modelsinspector.py:20: RemovedInDjango19Warning: django.contrib.contenttypes.generic is deprecated and will be removed in Django 1.9. Its contents have been moved to the fields, forms, and admin submodules of django.contrib.contenttypes.
+  from django.contrib.contenttypes import generic
+
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x7dff50 pid: 7929 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 7929)
+spawned uWSGI worker 1 (pid: 7934, cores: 1)
+spawned uWSGI worker 2 (pid: 7935, cores: 1)
+spawned uWSGI worker 3 (pid: 7936, cores: 1)
+spawned uWSGI worker 4 (pid: 7937, cores: 1)
+spawned uWSGI worker 5 (pid: 7938, cores: 1)
+   New revision!!!! RELOAD!
+      cafaaf88-fc10-4993-9069-c66bc88717e8 (<type 'unicode'>)
+   -> None (<type 'NoneType'>)
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+[pid: 7934|app: 0|req: 1/1] 107.170.0.159 () {46 vars in 1033 bytes} [Sun May  8 17:41:53 2016] GET /en/squid-access-log-parse-and-spark-processing/ => generated 40185 bytes in 968 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+   New revision!!!! RELOAD!
+      cafaaf88-fc10-4993-9069-c66bc88717e8 (<type 'unicode'>)
+   -> None (<type 'NoneType'>)
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+[pid: 7937|app: 0|req: 1/2] 107.170.0.159 () {44 vars in 979 bytes} [Sun May  8 17:42:03 2016] GET /squid-access-log-parse-and-spark-processing/ => generated 0 bytes in 201 msecs (HTTP/1.1 302) 3 headers in 162 bytes (1 switches on core 0)
+   New revision!!!! RELOAD!
+      cafaaf88-fc10-4993-9069-c66bc88717e8 (<type 'unicode'>)
+   -> None (<type 'NoneType'>)
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+[pid: 7936|app: 0|req: 1/3] 107.170.0.159 () {44 vars in 985 bytes} [Sun May  8 17:42:04 2016] GET /en/squid-access-log-parse-and-spark-processing/ => generated 40185 bytes in 864 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+[pid: 7937|app: 0|req: 2/4] 107.170.0.159 () {44 vars in 1002 bytes} [Sun May  8 17:42:08 2016] GET /en/squid-access-log-parse-and-spark-processing/ => generated 40185 bytes in 855 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+[pid: 7937|app: 0|req: 3/5] 107.170.0.159 () {44 vars in 961 bytes} [Sun May  8 17:43:41 2016] GET /en/admin/blog2/categoryextension/2/ => generated 6503 bytes in 145 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+[pid: 7936|app: 0|req: 2/6] 107.170.0.159 () {42 vars in 805 bytes} [Sun May  8 17:43:41 2016] GET /en/admin/jsi18n/ => generated 2372 bytes in 51 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+[pid: 7937|app: 0|req: 4/7] 107.170.0.159 () {44 vars in 897 bytes} [Sun May  8 17:43:56 2016] GET /en/ => generated 43313 bytes in 485 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+[pid: 7936|app: 0|req: 3/8] 107.170.0.159 () {42 vars in 1054 bytes} [Sun May  8 17:43:57 2016] GET /media/filer_public_thumbnails/filer_public/a0/4d/a04d39d2-4652-4daf-8530-d6fcd69895e9/black-hole.jpg__700x200_q85_crop_subsampling-2_upscale.jpg => generated 40391 bytes in 43 msecs via sendfile() (HTTP/1.1 200) 8 headers in 299 bytes (0 switches on core 0)
+[pid: 7937|app: 0|req: 5/9] 107.170.0.159 () {44 vars in 917 bytes} [Sun May  8 17:43:59 2016] GET /en/admin/blog2/categoryextension/1/ => generated 6503 bytes in 80 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+[pid: 7936|app: 0|req: 4/10] 107.170.0.159 () {42 vars in 805 bytes} [Sun May  8 17:43:59 2016] GET /en/admin/jsi18n/ => generated 2372 bytes in 31 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+/root/Env/blog2/local/lib/python2.7/site-packages/django/template/base.py:827: RemovedInDjango19Warning: `request.REQUEST` is deprecated, use `request.GET` or `request.POST` instead.
+  current = getattr(current, bit)
+
+/root/Env/blog2/local/lib/python2.7/site-packages/django/core/handlers/wsgi.py:126: RemovedInDjango19Warning: `MergeDict` is deprecated, use `dict.update()` instead.
+  self._request = datastructures.MergeDict(self.POST, self.GET)
+
+[pid: 7937|app: 0|req: 6/11] 107.170.0.159 () {44 vars in 928 bytes} [Sun May  8 17:44:16 2016] GET /en/admin/cms/page/?page_id=16&language=en => generated 8900 bytes in 147 msecs (HTTP/1.1 200) 9 headers in 526 bytes (1 switches on core 0)
+[pid: 7936|app: 0|req: 5/12] 107.170.0.159 () {46 vars in 977 bytes} [Sun May  8 17:44:17 2016] GET /en/admin/cms/page/get-tree/?language=en&pageId=&site=1 => generated 36928 bytes in 277 msecs (HTTP/1.1 200) 7 headers in 273 bytes (1 switches on core 0)
+[pid: 7937|app: 0|req: 7/13] 107.170.0.159 () {44 vars in 949 bytes} [Sun May  8 17:44:21 2016] GET /en/admin/cms/page/19/en/preview/ => generated 0 bytes in 34 msecs (HTTP/1.1 302) 8 headers in 344 bytes (1 switches on core 0)
+[pid: 7936|app: 0|req: 6/14] 107.170.0.159 () {44 vars in 942 bytes} [Sun May  8 17:44:21 2016] GET /en/stap-ana/?edit&language=en => generated 39902 bytes in 438 msecs (HTTP/1.1 200) 9 headers in 526 bytes (1 switches on core 0)
+[pid: 7937|app: 0|req: 8/15] 107.170.0.159 () {44 vars in 954 bytes} [Sun May  8 17:44:22 2016] GET /en/admin/cms/page/?page_id=19&language=en => generated 8900 bytes in 219 msecs (HTTP/1.1 200) 9 headers in 526 bytes (1 switches on core 0)
+[pid: 7936|app: 0|req: 7/16] 107.170.0.159 () {46 vars in 977 bytes} [Sun May  8 17:44:23 2016] GET /en/admin/cms/page/get-tree/?language=en&pageId=&site=1 => generated 36928 bytes in 322 msecs (HTTP/1.1 200) 7 headers in 273 bytes (1 switches on core 0)
+[pid: 7937|app: 0|req: 9/17] 107.170.0.159 () {44 vars in 899 bytes} [Sun May  8 17:44:27 2016] GET /en/admin/cms/page/resolve/?model=cms.page&pk=19 => generated 13 bytes in 35 msecs (HTTP/1.1 200) 7 headers in 259 bytes (1 switches on core 0)
+[pid: 7936|app: 0|req: 8/18] 107.170.0.159 () {46 vars in 961 bytes} [Sun May  8 17:44:28 2016] GET /en/stap-ana/?edit&language=en => generated 39902 bytes in 372 msecs (HTTP/1.1 200) 9 headers in 526 bytes (1 switches on core 0)
+[pid: 7937|app: 0|req: 10/19] 107.170.0.159 () {44 vars in 943 bytes} [Sun May  8 17:44:33 2016] GET /en/admin/blog2/categoryextension/3/ => generated 6503 bytes in 88 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+[pid: 7936|app: 0|req: 9/20] 107.170.0.159 () {42 vars in 805 bytes} [Sun May  8 17:44:34 2016] GET /en/admin/jsi18n/ => generated 2372 bytes in 29 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+Sun May  8 17:46:41 2016 - uWSGI worker 1 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sun May  8 17:46:41 2016 - uWSGI worker 2 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sun May  8 17:46:41 2016 - uWSGI worker 3 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sun May  8 17:46:41 2016 - uWSGI worker 4 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sun May  8 17:46:41 2016 - uWSGI worker 5 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+*** Starting uWSGI 2.0.12 (64bit) on [Sun May  8 17:46:44 2016] ***
+compiled with version: 4.7.2 on 05 May 2016 03:37:02
+os: Linux-3.2.0-4-amd64 #1 SMP Debian 3.2.54-2
+nodename: roidinev
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /root/blog2/menu_plugin
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /root/blog2
+your processes number limit is 3882
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /root/blog2/blog2.sock fd 3
+Python version: 2.7.3 (default, Mar 13 2014, 11:26:58)  [GCC 4.7.2]
+Set PythonHome to /root/Env/blog2
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x2523f50
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 436608 bytes (426 KB) for 5 cores
+*** Operational MODE: preforking ***
+/root/Env/blog2/local/lib/python2.7/site-packages/south/modelsinspector.py:20: RemovedInDjango19Warning: django.contrib.contenttypes.generic is deprecated and will be removed in Django 1.9. Its contents have been moved to the fields, forms, and admin submodules of django.contrib.contenttypes.
+  from django.contrib.contenttypes import generic
+
+WSGI app 0 (mountpoint='') ready in 2 seconds on interpreter 0x2523f50 pid: 7947 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 7947)
+spawned uWSGI worker 1 (pid: 7952, cores: 1)
+spawned uWSGI worker 2 (pid: 7953, cores: 1)
+spawned uWSGI worker 3 (pid: 7954, cores: 1)
+spawned uWSGI worker 4 (pid: 7955, cores: 1)
+spawned uWSGI worker 5 (pid: 7956, cores: 1)
+   New revision!!!! RELOAD!
+      cafaaf88-fc10-4993-9069-c66bc88717e8 (<type 'unicode'>)
+   -> None (<type 'NoneType'>)
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+[pid: 7952|app: 0|req: 1/1] 107.170.0.159 () {46 vars in 961 bytes} [Sun May  8 17:46:49 2016] GET /en/stap-ana/?edit&language=en => generated 256613 bytes in 1497 msecs (HTTP/1.1 500) 8 headers in 399 bytes (1 switches on core 0)
+Sun May  8 17:49:47 2016 - uWSGI worker 1 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sun May  8 17:49:47 2016 - uWSGI worker 2 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sun May  8 17:49:47 2016 - uWSGI worker 3 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sun May  8 17:49:47 2016 - uWSGI worker 4 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sun May  8 17:49:47 2016 - uWSGI worker 5 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+*** Starting uWSGI 2.0.12 (64bit) on [Sun May  8 17:49:50 2016] ***
+compiled with version: 4.7.2 on 05 May 2016 03:37:02
+os: Linux-3.2.0-4-amd64 #1 SMP Debian 3.2.54-2
+nodename: roidinev
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /root/blog2/menu_plugin
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /root/blog2
+your processes number limit is 3882
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /root/blog2/blog2.sock fd 3
+Python version: 2.7.3 (default, Mar 13 2014, 11:26:58)  [GCC 4.7.2]
+Set PythonHome to /root/Env/blog2
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x2646f50
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 436608 bytes (426 KB) for 5 cores
+*** Operational MODE: preforking ***
+/root/Env/blog2/local/lib/python2.7/site-packages/south/modelsinspector.py:20: RemovedInDjango19Warning: django.contrib.contenttypes.generic is deprecated and will be removed in Django 1.9. Its contents have been moved to the fields, forms, and admin submodules of django.contrib.contenttypes.
+  from django.contrib.contenttypes import generic
+
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x2646f50 pid: 7973 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 7973)
+spawned uWSGI worker 1 (pid: 7978, cores: 1)
+spawned uWSGI worker 2 (pid: 7979, cores: 1)
+spawned uWSGI worker 3 (pid: 7980, cores: 1)
+spawned uWSGI worker 4 (pid: 7981, cores: 1)
+spawned uWSGI worker 5 (pid: 7982, cores: 1)
+   New revision!!!! RELOAD!
+      cafaaf88-fc10-4993-9069-c66bc88717e8 (<type 'unicode'>)
+   -> None (<type 'NoneType'>)
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+[pid: 7978|app: 0|req: 1/1] 107.170.0.159 () {44 vars in 897 bytes} [Sun May  8 17:49:56 2016] GET /en/ => generated 43313 bytes in 1005 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+   New revision!!!! RELOAD!
+      cafaaf88-fc10-4993-9069-c66bc88717e8 (<type 'unicode'>)
+   -> None (<type 'NoneType'>)
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+[pid: 7982|app: 0|req: 1/2] 107.170.0.159 () {44 vars in 943 bytes} [Sun May  8 17:50:11 2016] GET /en/admin/cms/staticplaceholder/delete-plugin/29/ => generated 3088 bytes in 394 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+   New revision!!!! RELOAD!
+      cafaaf88-fc10-4993-9069-c66bc88717e8 (<type 'unicode'>)
+   -> None (<type 'NoneType'>)
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+[pid: 7981|app: 0|req: 1/3] 107.170.0.159 () {52 vars in 1169 bytes} [Sun May  8 17:50:14 2016] POST /en/admin/cms/staticplaceholder/delete-plugin/29/ => generated 0 bytes in 428 msecs (HTTP/1.1 302) 9 headers in 509 bytes (1 switches on core 0)
+[pid: 7982|app: 0|req: 2/4] 107.170.0.159 () {46 vars in 1095 bytes} [Sun May  8 17:50:15 2016] GET /en/admin/ => generated 14804 bytes in 81 msecs (HTTP/1.1 200) 8 headers in 355 bytes (1 switches on core 0)
+[pid: 7981|app: 0|req: 2/5] 107.170.0.159 () {44 vars in 873 bytes} [Sun May  8 17:50:15 2016] GET /en/admin/cms/page/resolve/?model=cms.page&pk=16 => generated 4 bytes in 20 msecs (HTTP/1.1 200) 7 headers in 259 bytes (1 switches on core 0)
+[pid: 7982|app: 0|req: 3/6] 107.170.0.159 () {46 vars in 884 bytes} [Sun May  8 17:50:16 2016] GET /en/ => generated 38916 bytes in 639 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+[pid: 7981|app: 0|req: 3/7] 107.170.0.159 () {44 vars in 1085 bytes} [Sun May  8 17:50:18 2016] GET /media/filer_public_thumbnails/filer_public/a0/4d/a04d39d2-4652-4daf-8530-d6fcd69895e9/black-hole.jpg__700x200_q85_crop_subsampling-2_upscale.jpg => generated 40391 bytes in 27 msecs via sendfile() (HTTP/1.1 200) 8 headers in 299 bytes (0 switches on core 0)
+[pid: 7982|app: 0|req: 4/8] 107.170.0.159 () {44 vars in 941 bytes} [Sun May  8 17:50:40 2016] GET /en/squid-access-log-parse-and-spark-processing/ => generated 35788 bytes in 305 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+Sun May  8 17:53:11 2016 - uWSGI worker 1 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sun May  8 17:53:11 2016 - uWSGI worker 2 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sun May  8 17:53:11 2016 - uWSGI worker 3 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sun May  8 17:53:11 2016 - uWSGI worker 4 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sun May  8 17:53:11 2016 - uWSGI worker 5 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+*** Starting uWSGI 2.0.12 (64bit) on [Sun May  8 17:53:14 2016] ***
+compiled with version: 4.7.2 on 05 May 2016 03:37:02
+os: Linux-3.2.0-4-amd64 #1 SMP Debian 3.2.54-2
+nodename: roidinev
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /root/blog2/menu_plugin
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /root/blog2
+your processes number limit is 3882
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /root/blog2/blog2.sock fd 3
+Python version: 2.7.3 (default, Mar 13 2014, 11:26:58)  [GCC 4.7.2]
+Set PythonHome to /root/Env/blog2
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x17f6f50
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 436608 bytes (426 KB) for 5 cores
+*** Operational MODE: preforking ***
+/root/Env/blog2/local/lib/python2.7/site-packages/south/modelsinspector.py:20: RemovedInDjango19Warning: django.contrib.contenttypes.generic is deprecated and will be removed in Django 1.9. Its contents have been moved to the fields, forms, and admin submodules of django.contrib.contenttypes.
+  from django.contrib.contenttypes import generic
+
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x17f6f50 pid: 8020 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 8020)
+spawned uWSGI worker 1 (pid: 8025, cores: 1)
+spawned uWSGI worker 2 (pid: 8026, cores: 1)
+spawned uWSGI worker 3 (pid: 8027, cores: 1)
+spawned uWSGI worker 4 (pid: 8028, cores: 1)
+spawned uWSGI worker 5 (pid: 8029, cores: 1)
+   New revision!!!! RELOAD!
+      cafaaf88-fc10-4993-9069-c66bc88717e8 (<type 'unicode'>)
+   -> None (<type 'NoneType'>)
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+[pid: 8029|app: 0|req: 1/1] 107.170.0.159 () {46 vars in 972 bytes} [Sun May  8 17:53:20 2016] GET /en/squid-access-log-parse-and-spark-processing/ => generated 35788 bytes in 822 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+[pid: 8029|app: 0|req: 2/2] 107.170.0.159 () {50 vars in 1090 bytes} [Sun May  8 17:54:03 2016] POST /en/admin/cms/staticplaceholder/add-plugin/ => generated 221 bytes in 97 msecs (HTTP/1.1 200) 7 headers in 265 bytes (1 switches on core 0)
+   New revision!!!! RELOAD!
+      cafaaf88-fc10-4993-9069-c66bc88717e8 (<type 'unicode'>)
+   -> None (<type 'NoneType'>)
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+[pid: 8028|app: 0|req: 1/3] 107.170.0.159 () {44 vars in 983 bytes} [Sun May  8 17:54:04 2016] GET /en/admin/cms/staticplaceholder/edit-plugin/31/ => generated 3338 bytes in 366 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+[pid: 8029|app: 0|req: 3/4] 107.170.0.159 () {42 vars in 816 bytes} [Sun May  8 17:54:05 2016] GET /en/admin/jsi18n/ => generated 2372 bytes in 30 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+[pid: 8028|app: 0|req: 2/5] 107.170.0.159 () {52 vars in 1235 bytes} [Sun May  8 17:54:08 2016] POST /en/admin/cms/staticplaceholder/edit-plugin/31/ => generated 2189 bytes in 109 msecs (HTTP/1.1 200) 7 headers in 273 bytes (1 switches on core 0)
+[pid: 8029|app: 0|req: 4/6] 107.170.0.159 () {42 vars in 816 bytes} [Sun May  8 17:54:09 2016] GET /en/admin/jsi18n/ => generated 2372 bytes in 27 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+[pid: 8028|app: 0|req: 3/7] 107.170.0.159 () {44 vars in 917 bytes} [Sun May  8 17:54:11 2016] GET /en/admin/cms/page/resolve/?model=cms.page&pk=18 => generated 48 bytes in 50 msecs (HTTP/1.1 200) 7 headers in 259 bytes (1 switches on core 0)
+[pid: 8029|app: 0|req: 5/8] 107.170.0.159 () {46 vars in 1016 bytes} [Sun May  8 17:54:12 2016] GET /en/squid-access-log-parse-and-spark-processing/ => generated 258969 bytes in 408 msecs (HTTP/1.1 500) 8 headers in 399 bytes (1 switches on core 0)
+[pid: 8029|app: 0|req: 6/9] 107.170.0.159 () {46 vars in 1016 bytes} [Sun May  8 18:03:38 2016] GET /en/squid-access-log-parse-and-spark-processing/ => generated 259188 bytes in 389 msecs (HTTP/1.1 500) 8 headers in 399 bytes (1 switches on core 0)
+[pid: 8028|app: 0|req: 4/10] 107.170.0.159 () {46 vars in 1016 bytes} [Sun May  8 18:03:41 2016] GET /en/squid-access-log-parse-and-spark-processing/ => generated 259188 bytes in 810 msecs (HTTP/1.1 500) 8 headers in 399 bytes (1 switches on core 0)
+[pid: 8029|app: 0|req: 7/11] 107.170.0.159 () {46 vars in 1016 bytes} [Sun May  8 18:03:48 2016] GET /en/squid-access-log-parse-and-spark-processing/ => generated 259188 bytes in 393 msecs (HTTP/1.1 500) 8 headers in 399 bytes (1 switches on core 0)
+[pid: 8028|app: 0|req: 5/12] 107.170.0.159 () {46 vars in 1016 bytes} [Sun May  8 18:03:54 2016] GET /en/squid-access-log-parse-and-spark-processing/ => generated 259188 bytes in 373 msecs (HTTP/1.1 500) 8 headers in 399 bytes (1 switches on core 0)
+[pid: 8029|app: 0|req: 8/13] 107.170.0.159 () {46 vars in 1016 bytes} [Sun May  8 18:04:00 2016] GET /en/squid-access-log-parse-and-spark-processing/ => generated 259188 bytes in 495 msecs (HTTP/1.1 500) 8 headers in 399 bytes (1 switches on core 0)
+Sun May  8 18:04:20 2016 - uWSGI worker 1 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sun May  8 18:04:20 2016 - uWSGI worker 2 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sun May  8 18:04:20 2016 - uWSGI worker 3 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sun May  8 18:04:20 2016 - uWSGI worker 4 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sun May  8 18:04:20 2016 - uWSGI worker 5 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+*** Starting uWSGI 2.0.12 (64bit) on [Sun May  8 18:04:23 2016] ***
+compiled with version: 4.7.2 on 05 May 2016 03:37:02
+os: Linux-3.2.0-4-amd64 #1 SMP Debian 3.2.54-2
+nodename: roidinev
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /root/blog2/menu_plugin
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /root/blog2
+your processes number limit is 3882
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /root/blog2/blog2.sock fd 3
+Python version: 2.7.3 (default, Mar 13 2014, 11:26:58)  [GCC 4.7.2]
+Set PythonHome to /root/Env/blog2
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x2429f50
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 436608 bytes (426 KB) for 5 cores
+*** Operational MODE: preforking ***
+/root/Env/blog2/local/lib/python2.7/site-packages/south/modelsinspector.py:20: RemovedInDjango19Warning: django.contrib.contenttypes.generic is deprecated and will be removed in Django 1.9. Its contents have been moved to the fields, forms, and admin submodules of django.contrib.contenttypes.
+  from django.contrib.contenttypes import generic
+
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x2429f50 pid: 8051 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 8051)
+spawned uWSGI worker 1 (pid: 8056, cores: 1)
+spawned uWSGI worker 2 (pid: 8057, cores: 1)
+spawned uWSGI worker 3 (pid: 8058, cores: 1)
+spawned uWSGI worker 4 (pid: 8059, cores: 1)
+spawned uWSGI worker 5 (pid: 8060, cores: 1)
+   New revision!!!! RELOAD!
+      cafaaf88-fc10-4993-9069-c66bc88717e8 (<type 'unicode'>)
+   -> None (<type 'NoneType'>)
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+[pid: 8056|app: 0|req: 1/1] 107.170.0.159 () {46 vars in 1016 bytes} [Sun May  8 18:04:26 2016] GET /en/squid-access-log-parse-and-spark-processing/ => generated 258706 bytes in 896 msecs (HTTP/1.1 500) 8 headers in 399 bytes (1 switches on core 0)
+Sun May  8 18:16:04 2016 - uWSGI worker 1 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sun May  8 18:16:04 2016 - uWSGI worker 2 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sun May  8 18:16:04 2016 - uWSGI worker 3 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sun May  8 18:16:04 2016 - uWSGI worker 4 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sun May  8 18:16:05 2016 - uWSGI worker 5 screams: UAAAAAAH my master disconnected: i will kill myself !!!

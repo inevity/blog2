@@ -1,0 +1,11 @@
+{% load thumbnail %}
+
+{% if link %}<a href="{{ link }}">{% endif %}
+{% if placeholder == "content" %}
+    <img src="{% thumbnail picture.image 200x500 crop upscale subject_location=obj.img.subject_location %}"{% if picture.alt %} alt="{{ picture.alt }}"{% endif %} />
+{% else %}
+    {% if placeholder == "teaser" %}
+        <img src="{% thumbnail picture.image 150x150 crop upscale subject_location=obj.img.subject_location %}"{% if picture.alt %} alt="{{ picture.alt }}"{% endif %} />
+    {% endif %}
+{% endif %}
+{% if link %}</a>{% endif %}

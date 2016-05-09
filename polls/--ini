@@ -1,0 +1,371 @@
+*** Starting uWSGI 2.0.12 (64bit) on [Sun May  8 06:45:25 2016] ***
+compiled with version: 4.7.2 on 05 May 2016 03:37:02
+os: Linux-3.2.0-4-amd64 #1 SMP Debian 3.2.54-2
+nodename: roidinev
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /root/blog2/polls
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /root/blog2
+your processes number limit is 3882
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /root/blog2/blog2.sock fd 3
+Python version: 2.7.3 (default, Mar 13 2014, 11:26:58)  [GCC 4.7.2]
+Set PythonHome to /root/Env/blog2
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x1ef1f40
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 436608 bytes (426 KB) for 5 cores
+*** Operational MODE: preforking ***
+/root/Env/blog2/local/lib/python2.7/site-packages/south/modelsinspector.py:20: RemovedInDjango19Warning: django.contrib.contenttypes.generic is deprecated and will be removed in Django 1.9. Its contents have been moved to the fields, forms, and admin submodules of django.contrib.contenttypes.
+  from django.contrib.contenttypes import generic
+
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x1ef1f40 pid: 6166 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 6166)
+spawned uWSGI worker 1 (pid: 6171, cores: 1)
+spawned uWSGI worker 2 (pid: 6172, cores: 1)
+spawned uWSGI worker 3 (pid: 6173, cores: 1)
+spawned uWSGI worker 4 (pid: 6174, cores: 1)
+spawned uWSGI worker 5 (pid: 6175, cores: 1)
+   New revision!!!! RELOAD!
+      120f59b1-45e5-42e5-afd4-a5e95d54e1fb (<type 'unicode'>)
+   -> None (<type 'NoneType'>)
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+[pid: 6171|app: 0|req: 1/1] 123.116.242.62 () {46 vars in 907 bytes} [Sun May  8 06:45:32 2016] GET /en/polls/1/ => generated 12234 bytes in 656 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+   New revision!!!! RELOAD!
+      120f59b1-45e5-42e5-afd4-a5e95d54e1fb (<type 'unicode'>)
+   -> None (<type 'NoneType'>)
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+[pid: 6174|app: 0|req: 1/2] 123.116.242.62 () {44 vars in 862 bytes} [Sun May  8 06:47:07 2016] GET /en/ => generated 33667 bytes in 1413 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+   New revision!!!! RELOAD!
+      120f59b1-45e5-42e5-afd4-a5e95d54e1fb (<type 'unicode'>)
+   -> None (<type 'NoneType'>)
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+[pid: 6175|app: 0|req: 1/3] 123.116.242.62 () {42 vars in 1055 bytes} [Sun May  8 06:47:09 2016] GET /media/filer_public_thumbnails/filer_public/a0/4d/a04d39d2-4652-4daf-8530-d6fcd69895e9/black-hole.jpg__700x200_q85_crop_subsampling-2_upscale.jpg => generated 40391 bytes in 166 msecs via sendfile() (HTTP/1.1 200) 8 headers in 299 bytes (0 switches on core 0)
+[pid: 6174|app: 0|req: 2/4] 123.116.242.62 () {44 vars in 985 bytes} [Sun May  8 06:47:15 2016] GET /en/admin/cms/page/add/?edit=1&position=last-child&target=&language=en => generated 9461 bytes in 141 msecs (HTTP/1.1 200) 9 headers in 526 bytes (1 switches on core 0)
+[pid: 6175|app: 0|req: 2/5] 123.116.242.62 () {42 vars in 840 bytes} [Sun May  8 06:47:15 2016] GET /en/admin/jsi18n/ => generated 2372 bytes in 49 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+[pid: 6174|app: 0|req: 3/6] 123.116.242.62 () {52 vars in 1276 bytes} [Sun May  8 06:47:35 2016] POST /en/admin/cms/page/add/?language=en&position=last-child => generated 0 bytes in 273 msecs (HTTP/1.1 302) 10 headers in 640 bytes (2 switches on core 0)
+/root/Env/blog2/local/lib/python2.7/site-packages/django/template/base.py:827: RemovedInDjango19Warning: `request.REQUEST` is deprecated, use `request.GET` or `request.POST` instead.
+  current = getattr(current, bit)
+
+/root/Env/blog2/local/lib/python2.7/site-packages/django/core/handlers/wsgi.py:126: RemovedInDjango19Warning: `MergeDict` is deprecated, use `dict.update()` instead.
+  self._request = datastructures.MergeDict(self.POST, self.GET)
+
+[pid: 6175|app: 0|req: 3/7] 123.116.242.62 () {46 vars in 1126 bytes} [Sun May  8 06:47:35 2016] GET /en/admin/cms/page/ => generated 9046 bytes in 278 msecs (HTTP/1.1 200) 10 headers in 608 bytes (1 switches on core 0)
+[pid: 6174|app: 0|req: 4/8] 123.116.242.62 () {46 vars in 955 bytes} [Sun May  8 06:47:38 2016] GET /en/admin/cms/page/get-tree/?language=en&pageId=&site=1 => generated 36911 bytes in 263 msecs (HTTP/1.1 200) 7 headers in 273 bytes (1 switches on core 0)
+[pid: 6175|app: 0|req: 4/9] 123.116.242.62 () {44 vars in 874 bytes} [Sun May  8 06:47:38 2016] GET /en/admin/cms/page/resolve/?model=cms.page&pk=16 => generated 14 bytes in 41 msecs (HTTP/1.1 200) 8 headers in 390 bytes (1 switches on core 0)
+[pid: 6174|app: 0|req: 5/10] 123.116.242.62 () {44 vars in 874 bytes} [Sun May  8 06:47:39 2016] GET /en/poll-page/ => generated 25054 bytes in 298 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+[pid: 6175|app: 0|req: 5/11] 123.116.242.62 () {42 vars in 800 bytes} [Sun May  8 06:47:39 2016] GET /en/poll-page/favicon.ico => generated 0 bytes in 14 msecs (HTTP/1.1 301) 5 headers in 203 bytes (1 switches on core 0)
+[pid: 6174|app: 0|req: 6/12] 123.116.242.62 () {42 vars in 802 bytes} [Sun May  8 06:47:40 2016] GET /en/poll-page/favicon.ico/ => generated 3560 bytes in 36 msecs (HTTP/1.1 404) 7 headers in 265 bytes (1 switches on core 0)
+[pid: 6174|app: 0|req: 7/13] 123.116.242.62 () {44 vars in 959 bytes} [Sun May  8 06:49:49 2016] GET /en/admin/cms/page/24/advanced-settings/?language=en => generated 13034 bytes in 181 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+[pid: 6175|app: 0|req: 6/14] 123.116.242.62 () {42 vars in 822 bytes} [Sun May  8 06:49:49 2016] GET /en/admin/jsi18n/ => generated 2372 bytes in 26 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+[pid: 6174|app: 0|req: 8/15] 123.116.242.62 () {52 vars in 1252 bytes} [Sun May  8 06:51:09 2016] POST /en/admin/cms/page/24/advanced-settings/?language=en => generated 0 bytes in 353 msecs (HTTP/1.1 302) 10 headers in 642 bytes (1 switches on core 0)
+[pid: 6175|app: 0|req: 7/16] 123.116.242.62 () {46 vars in 1110 bytes} [Sun May  8 06:51:10 2016] GET /en/admin/cms/page/ => generated 9048 bytes in 301 msecs (HTTP/1.1 200) 10 headers in 608 bytes (2 switches on core 0)
+[pid: 6175|app: 0|req: 8/17] 123.116.242.62 () {44 vars in 884 bytes} [Sun May  8 06:51:11 2016] GET /en/admin/cms/page/resolve/?model=cms.page&pk=24 => generated 14 bytes in 84 msecs (HTTP/1.1 200) 8 headers in 390 bytes (1 switches on core 0)
+[pid: 6174|app: 0|req: 9/18] 123.116.242.62 () {46 vars in 955 bytes} [Sun May  8 06:51:11 2016] GET /en/admin/cms/page/get-tree/?language=en&pageId=&site=1 => generated 37127 bytes in 318 msecs (HTTP/1.1 200) 7 headers in 273 bytes (1 switches on core 0)
+[pid: 6175|app: 0|req: 9/19] 123.116.242.62 () {46 vars in 915 bytes} [Sun May  8 06:51:12 2016] GET /en/poll-page/ => generated 25017 bytes in 544 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+[pid: 6174|app: 0|req: 10/20] 123.116.242.62 () {46 vars in 915 bytes} [Sun May  8 06:51:16 2016] GET /en/poll-page/ => generated 25017 bytes in 260 msecs (HTTP/1.1 200) 8 headers in 395 bytes (2 switches on core 0)
+[pid: 6174|app: 0|req: 11/21] 123.116.242.62 () {46 vars in 915 bytes} [Sun May  8 06:51:50 2016] GET /en/poll-page/ => generated 25017 bytes in 288 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+Sun May  8 06:52:08 2016 - uWSGI worker 1 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sun May  8 06:52:08 2016 - uWSGI worker 2 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sun May  8 06:52:08 2016 - uWSGI worker 3 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sun May  8 06:52:08 2016 - uWSGI worker 4 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sun May  8 06:52:08 2016 - uWSGI worker 5 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+*** Starting uWSGI 2.0.12 (64bit) on [Sun May  8 06:52:13 2016] ***
+compiled with version: 4.7.2 on 05 May 2016 03:37:02
+os: Linux-3.2.0-4-amd64 #1 SMP Debian 3.2.54-2
+nodename: roidinev
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /root/blog2/polls
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /root/blog2
+your processes number limit is 3882
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /root/blog2/blog2.sock fd 3
+Python version: 2.7.3 (default, Mar 13 2014, 11:26:58)  [GCC 4.7.2]
+Set PythonHome to /root/Env/blog2
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x188bf40
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 436608 bytes (426 KB) for 5 cores
+*** Operational MODE: preforking ***
+/root/Env/blog2/local/lib/python2.7/site-packages/south/modelsinspector.py:20: RemovedInDjango19Warning: django.contrib.contenttypes.generic is deprecated and will be removed in Django 1.9. Its contents have been moved to the fields, forms, and admin submodules of django.contrib.contenttypes.
+  from django.contrib.contenttypes import generic
+
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x188bf40 pid: 6182 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 6182)
+spawned uWSGI worker 1 (pid: 6187, cores: 1)
+spawned uWSGI worker 2 (pid: 6188, cores: 1)
+spawned uWSGI worker 3 (pid: 6189, cores: 1)
+spawned uWSGI worker 4 (pid: 6190, cores: 1)
+spawned uWSGI worker 5 (pid: 6191, cores: 1)
+   New revision!!!! RELOAD!
+      120f59b1-45e5-42e5-afd4-a5e95d54e1fb (<type 'unicode'>)
+   -> None (<type 'NoneType'>)
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+[pid: 6188|app: 0|req: 1/1] 123.116.242.62 () {46 vars in 915 bytes} [Sun May  8 06:52:17 2016] GET /en/poll-page/ => generated 25017 bytes in 798 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+   New revision!!!! RELOAD!
+      120f59b1-45e5-42e5-afd4-a5e95d54e1fb (<type 'unicode'>)
+   -> None (<type 'NoneType'>)
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+Application url changed and urls_need_reloading signal fired. Please reload the urls.py or restart the server.
+[pid: 6191|app: 0|req: 1/2] 123.116.242.62 () {50 vars in 1035 bytes} [Sun May  8 06:52:33 2016] POST /en/admin/cms/page/24/en/publish/ => generated 0 bytes in 548 msecs (HTTP/1.1 302) 10 headers in 633 bytes (2 switches on core 0)
+   New revision!!!! RELOAD!
+      cafaaf88-fc10-4993-9069-c66bc88717e8 (<type 'unicode'>)
+   -> 120f59b1-45e5-42e5-afd4-a5e95d54e1fb (<type 'unicode'>)
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+[pid: 6188|app: 0|req: 2/3] 123.116.242.62 () {44 vars in 968 bytes} [Sun May  8 06:52:35 2016] GET /en/poll-page/?edit_off => generated 15856 bytes in 320 msecs (HTTP/1.1 200) 7 headers in 459 bytes (1 switches on core 0)
+   New revision!!!! RELOAD!
+      cafaaf88-fc10-4993-9069-c66bc88717e8 (<type 'unicode'>)
+   -> 120f59b1-45e5-42e5-afd4-a5e95d54e1fb (<type 'unicode'>)
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+[pid: 6191|app: 0|req: 2/4] 123.116.242.62 () {44 vars in 911 bytes} [Sun May  8 06:52:35 2016] GET /en/poll-page/?edit_off=true => generated 15817 bytes in 561 msecs (HTTP/1.1 200) 5 headers in 246 bytes (1 switches on core 0)
+[pid: 6188|app: 0|req: 3/5] 123.116.242.62 () {44 vars in 894 bytes} [Sun May  8 06:52:40 2016] GET /en/polls/1/ => generated 11968 bytes in 138 msecs (HTTP/1.1 200) 5 headers in 246 bytes (1 switches on core 0)
+[pid: 6191|app: 0|req: 3/6] 123.116.242.62 () {44 vars in 911 bytes} [Sun May  8 06:52:45 2016] GET /en/poll-page/?edit_off=true => generated 15817 bytes in 170 msecs (HTTP/1.1 200) 5 headers in 246 bytes (1 switches on core 0)
+[pid: 6188|app: 0|req: 4/7] 123.116.242.62 () {44 vars in 907 bytes} [Sun May  8 06:52:55 2016] GET /en/poll-page/?edit => generated 19594 bytes in 336 msecs (HTTP/1.1 200) 9 headers in 526 bytes (1 switches on core 0)
+[pid: 6191|app: 0|req: 4/8] 123.116.242.62 () {44 vars in 964 bytes} [Sun May  8 06:53:02 2016] GET /en/admin/cms/page/24/advanced-settings/?language=en => generated 13048 bytes in 129 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+[pid: 6188|app: 0|req: 5/9] 123.116.242.62 () {42 vars in 822 bytes} [Sun May  8 06:53:02 2016] GET /en/admin/jsi18n/ => generated 2372 bytes in 31 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+[pid: 6191|app: 0|req: 5/10] 123.116.242.62 () {52 vars in 1252 bytes} [Sun May  8 06:53:16 2016] POST /en/admin/cms/page/24/advanced-settings/?language=en => generated 0 bytes in 220 msecs (HTTP/1.1 302) 10 headers in 642 bytes (1 switches on core 0)
+/root/Env/blog2/local/lib/python2.7/site-packages/django/template/base.py:827: RemovedInDjango19Warning: `request.REQUEST` is deprecated, use `request.GET` or `request.POST` instead.
+  current = getattr(current, bit)
+
+/root/Env/blog2/local/lib/python2.7/site-packages/django/core/handlers/wsgi.py:126: RemovedInDjango19Warning: `MergeDict` is deprecated, use `dict.update()` instead.
+  self._request = datastructures.MergeDict(self.POST, self.GET)
+
+[pid: 6188|app: 0|req: 6/11] 123.116.242.62 () {46 vars in 1110 bytes} [Sun May  8 06:53:17 2016] GET /en/admin/cms/page/ => generated 9048 bytes in 190 msecs (HTTP/1.1 200) 10 headers in 608 bytes (1 switches on core 0)
+[pid: 6188|app: 0|req: 7/12] 123.116.242.62 () {44 vars in 869 bytes} [Sun May  8 06:53:17 2016] GET /en/admin/cms/page/resolve/?model=&pk= => generated 14 bytes in 64 msecs (HTTP/1.1 200) 8 headers in 390 bytes (1 switches on core 0)
+[pid: 6191|app: 0|req: 6/13] 123.116.242.62 () {46 vars in 955 bytes} [Sun May  8 06:53:17 2016] GET /en/admin/cms/page/get-tree/?language=en&pageId=&site=1 => generated 37546 bytes in 297 msecs (HTTP/1.1 200) 7 headers in 273 bytes (1 switches on core 0)
+[pid: 6188|app: 0|req: 8/14] 123.116.242.62 () {46 vars in 929 bytes} [Sun May  8 06:53:18 2016] GET /en/poll-page/?edit => generated 19563 bytes in 206 msecs (HTTP/1.1 200) 9 headers in 526 bytes (1 switches on core 0)
+[pid: 6191|app: 0|req: 7/15] 123.116.242.62 () {44 vars in 957 bytes} [Sun May  8 06:53:21 2016] GET /en/squid-access-log-parse-and-spark-processing/ => generated 30593 bytes in 449 msecs (HTTP/1.1 200) 8 headers in 395 bytes (2 switches on core 0)
+[pid: 6188|app: 0|req: 9/16] 123.116.242.62 () {44 vars in 918 bytes} [Sun May  8 06:53:26 2016] GET /en/poll-page/ => generated 19563 bytes in 267 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+[pid: 6191|app: 0|req: 8/17] 123.116.242.62 () {50 vars in 1094 bytes} [Sun May  8 06:53:30 2016] POST /en/admin/cms/page/24/en/publish/?redirect=%2Fen%2Fpoll-page%2F => generated 0 bytes in 240 msecs (HTTP/1.1 302) 10 headers in 624 bytes (1 switches on core 0)
+[pid: 6188|app: 0|req: 10/18] 123.116.242.62 () {44 vars in 951 bytes} [Sun May  8 06:53:31 2016] GET /en/poll-page/ => generated 19633 bytes in 281 msecs (HTTP/1.1 200) 10 headers in 608 bytes (1 switches on core 0)
+[pid: 6191|app: 0|req: 9/19] 123.116.242.62 () {44 vars in 911 bytes} [Sun May  8 06:53:31 2016] GET /en/poll-page/?edit_off=true => generated 15817 bytes in 229 msecs (HTTP/1.1 200) 6 headers in 377 bytes (1 switches on core 0)
+[pid: 6188|app: 0|req: 11/20] 123.116.242.62 () {44 vars in 898 bytes} [Sun May  8 06:53:35 2016] GET /en/poll-page/ => generated 15817 bytes in 224 msecs (HTTP/1.1 200) 5 headers in 246 bytes (1 switches on core 0)
+[pid: 6191|app: 0|req: 10/21] 123.116.242.62 () {44 vars in 893 bytes} [Sun May  8 06:53:40 2016] GET /en/poll-page/?edit => generated 19594 bytes in 278 msecs (HTTP/1.1 200) 9 headers in 526 bytes (1 switches on core 0)
+[pid: 6188|app: 0|req: 12/22] 123.116.242.62 () {50 vars in 1054 bytes} [Sun May  8 06:53:45 2016] POST /en/admin/cms/page/24/change-navigation/ => generated 1 bytes in 155 msecs (HTTP/1.1 200) 7 headers in 273 bytes (1 switches on core 0)
+[pid: 6191|app: 0|req: 11/23] 123.116.242.62 () {44 vars in 869 bytes} [Sun May  8 06:53:45 2016] GET /en/admin/cms/page/resolve/?model=&pk= => generated 0 bytes in 30 msecs (HTTP/1.1 200) 7 headers in 259 bytes (1 switches on core 0)
+[pid: 6188|app: 0|req: 13/24] 123.116.242.62 () {46 vars in 929 bytes} [Sun May  8 06:53:46 2016] GET /en/poll-page/?edit => generated 19353 bytes in 241 msecs (HTTP/1.1 200) 9 headers in 526 bytes (1 switches on core 0)
+[pid: 6191|app: 0|req: 12/25] 123.116.242.62 () {44 vars in 928 bytes} [Sun May  8 07:00:36 2016] GET /en/admin/cms/page/24/?language=en => generated 9727 bytes in 148 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+[pid: 6188|app: 0|req: 14/26] 123.116.242.62 () {42 vars in 804 bytes} [Sun May  8 07:00:37 2016] GET /en/admin/jsi18n/ => generated 2372 bytes in 45 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+[pid: 6191|app: 0|req: 13/27] 123.116.242.62 () {44 vars in 964 bytes} [Sun May  8 07:00:40 2016] GET /en/admin/cms/page/24/advanced-settings/?language=en => generated 13048 bytes in 108 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+[pid: 6188|app: 0|req: 15/28] 123.116.242.62 () {42 vars in 822 bytes} [Sun May  8 07:00:41 2016] GET /en/admin/jsi18n/ => generated 2372 bytes in 25 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+[pid: 6191|app: 0|req: 14/29] 123.116.242.62 () {52 vars in 1252 bytes} [Sun May  8 07:00:51 2016] POST /en/admin/cms/page/24/advanced-settings/?language=en => generated 0 bytes in 297 msecs (HTTP/1.1 302) 10 headers in 642 bytes (1 switches on core 0)
+[pid: 6188|app: 0|req: 16/30] 123.116.242.62 () {46 vars in 1110 bytes} [Sun May  8 07:00:51 2016] GET /en/admin/cms/page/ => generated 9048 bytes in 165 msecs (HTTP/1.1 200) 10 headers in 608 bytes (1 switches on core 0)
+[pid: 6188|app: 0|req: 17/31] 123.116.242.62 () {44 vars in 869 bytes} [Sun May  8 07:00:52 2016] GET /en/admin/cms/page/resolve/?model=&pk= => generated 14 bytes in 82 msecs (HTTP/1.1 200) 8 headers in 390 bytes (1 switches on core 0)
+[pid: 6191|app: 0|req: 15/32] 123.116.242.62 () {46 vars in 955 bytes} [Sun May  8 07:00:52 2016] GET /en/admin/cms/page/get-tree/?language=en&pageId=&site=1 => generated 37550 bytes in 338 msecs (HTTP/1.1 200) 7 headers in 273 bytes (1 switches on core 0)
+[pid: 6188|app: 0|req: 18/33] 123.116.242.62 () {46 vars in 929 bytes} [Sun May  8 07:00:52 2016] GET /en/poll-page/?edit => generated 19353 bytes in 220 msecs (HTTP/1.1 200) 9 headers in 526 bytes (1 switches on core 0)
+[pid: 6191|app: 0|req: 16/34] 123.116.242.62 () {50 vars in 1054 bytes} [Sun May  8 07:00:59 2016] POST /en/admin/cms/page/24/change-navigation/ => generated 1 bytes in 168 msecs (HTTP/1.1 200) 7 headers in 273 bytes (2 switches on core 0)
+[pid: 6188|app: 0|req: 19/35] 123.116.242.62 () {44 vars in 869 bytes} [Sun May  8 07:00:59 2016] GET /en/admin/cms/page/resolve/?model=&pk= => generated 0 bytes in 34 msecs (HTTP/1.1 200) 7 headers in 259 bytes (1 switches on core 0)
+[pid: 6191|app: 0|req: 17/36] 123.116.242.62 () {46 vars in 929 bytes} [Sun May  8 07:01:00 2016] GET /en/poll-page/?edit => generated 19563 bytes in 271 msecs (HTTP/1.1 200) 9 headers in 526 bytes (1 switches on core 0)
+[pid: 6188|app: 0|req: 20/37] 123.116.242.62 () {50 vars in 1054 bytes} [Sun May  8 07:01:08 2016] POST /en/admin/cms/page/24/change-navigation/ => generated 1 bytes in 104 msecs (HTTP/1.1 200) 7 headers in 273 bytes (2 switches on core 0)
+[pid: 6191|app: 0|req: 18/38] 123.116.242.62 () {44 vars in 869 bytes} [Sun May  8 07:01:08 2016] GET /en/admin/cms/page/resolve/?model=&pk= => generated 0 bytes in 27 msecs (HTTP/1.1 200) 7 headers in 259 bytes (1 switches on core 0)
+[pid: 6188|app: 0|req: 21/39] 123.116.242.62 () {46 vars in 929 bytes} [Sun May  8 07:01:09 2016] GET /en/poll-page/?edit => generated 19353 bytes in 240 msecs (HTTP/1.1 200) 9 headers in 526 bytes (1 switches on core 0)
+[pid: 6191|app: 0|req: 19/40] 123.116.242.62 () {44 vars in 957 bytes} [Sun May  8 07:01:15 2016] GET /en/squid-access-log-parse-and-spark-processing/ => generated 30593 bytes in 349 msecs (HTTP/1.1 200) 8 headers in 395 bytes (2 switches on core 0)
+[pid: 6188|app: 0|req: 22/41] 123.116.242.62 () {44 vars in 898 bytes} [Sun May  8 07:01:19 2016] GET /en/ => generated 33667 bytes in 449 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+[pid: 6191|app: 0|req: 20/42] 123.116.242.62 () {42 vars in 1055 bytes} [Sun May  8 07:01:19 2016] GET /media/filer_public_thumbnails/filer_public/a0/4d/a04d39d2-4652-4daf-8530-d6fcd69895e9/black-hole.jpg__700x200_q85_crop_subsampling-2_upscale.jpg => generated 40391 bytes in 21 msecs via sendfile() (HTTP/1.1 200) 8 headers in 299 bytes (0 switches on core 0)
+[pid: 6188|app: 0|req: 23/43] 123.116.242.62 () {44 vars in 942 bytes} [Sun May  8 07:01:21 2016] GET /en/squid-access-log-parse-and-spark-processing/ => generated 30459 bytes in 286 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+...gracefully killing workers...
+Gracefully killing worker 1 (pid: 6187)...
+Gracefully killing worker 2 (pid: 6188)...
+Gracefully killing worker 3 (pid: 6189)...
+Gracefully killing worker 4 (pid: 6190)...
+Gracefully killing worker 5 (pid: 6191)...
+worker 1 buried after 2 seconds
+worker 2 buried after 2 seconds
+worker 3 buried after 2 seconds
+worker 4 buried after 2 seconds
+worker 5 buried after 2 seconds
+binary reloading uWSGI...
+chdir() to /root/blog2/polls
+closing all non-uwsgi socket fds > 2 (max_fd = 1024)...
+found fd 3 mapped to socket 0 (/root/blog2/blog2.sock)
+running /usr/local/bin/uwsgi
+[uWSGI] getting INI configuration from /etc/uwsgi/sites/blog2.ini
+*** Starting uWSGI 2.0.12 (64bit) on [Sun May  8 07:09:02 2016] ***
+compiled with version: 4.7.2 on 05 May 2016 03:37:02
+os: Linux-3.2.0-4-amd64 #1 SMP Debian 3.2.54-2
+nodename: roidinev
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /root/blog2/polls
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /root/blog2
+your processes number limit is 3882
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 inherited UNIX address /root/blog2/blog2.sock fd 3
+Python version: 2.7.3 (default, Mar 13 2014, 11:26:58)  [GCC 4.7.2]
+Set PythonHome to /root/Env/blog2
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x2639e10
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 436608 bytes (426 KB) for 5 cores
+*** Operational MODE: preforking ***
+/root/Env/blog2/local/lib/python2.7/site-packages/south/modelsinspector.py:20: RemovedInDjango19Warning: django.contrib.contenttypes.generic is deprecated and will be removed in Django 1.9. Its contents have been moved to the fields, forms, and admin submodules of django.contrib.contenttypes.
+  from django.contrib.contenttypes import generic
+
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x2639e10 pid: 6182 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+gracefully (RE)spawned uWSGI master process (pid: 6182)
+spawned uWSGI worker 1 (pid: 6405, cores: 1)
+spawned uWSGI worker 2 (pid: 6406, cores: 1)
+spawned uWSGI worker 3 (pid: 6407, cores: 1)
+spawned uWSGI worker 4 (pid: 6408, cores: 1)
+spawned uWSGI worker 5 (pid: 6409, cores: 1)
+   New revision!!!! RELOAD!
+      cafaaf88-fc10-4993-9069-c66bc88717e8 (<type 'unicode'>)
+   -> None (<type 'NoneType'>)
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+[pid: 6406|app: 0|req: 1/1] 107.170.0.159 () {46 vars in 972 bytes} [Sun May  8 07:09:54 2016] GET /en/squid-access-log-parse-and-spark-processing/ => generated 30459 bytes in 1146 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+[pid: 6406|app: 0|req: 2/2] 107.170.0.159 () {44 vars in 897 bytes} [Sun May  8 07:10:05 2016] GET /en/ => generated 33667 bytes in 425 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+   New revision!!!! RELOAD!
+      cafaaf88-fc10-4993-9069-c66bc88717e8 (<type 'unicode'>)
+   -> None (<type 'NoneType'>)
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+[pid: 6409|app: 0|req: 1/3] 107.170.0.159 () {42 vars in 1054 bytes} [Sun May  8 07:10:06 2016] GET /media/filer_public_thumbnails/filer_public/a0/4d/a04d39d2-4652-4daf-8530-d6fcd69895e9/black-hole.jpg__700x200_q85_crop_subsampling-2_upscale.jpg => generated 40391 bytes in 217 msecs via sendfile() (HTTP/1.1 200) 8 headers in 299 bytes (0 switches on core 0)
+[pid: 6406|app: 0|req: 3/4] 107.170.0.159 () {50 vars in 1024 bytes} [Sun May  8 07:10:13 2016] POST /en/admin/cms/page/16/en/publish/ => generated 0 bytes in 359 msecs (HTTP/1.1 302) 10 headers in 623 bytes (1 switches on core 0)
+[pid: 6409|app: 0|req: 2/5] 107.170.0.159 () {44 vars in 937 bytes} [Sun May  8 07:10:13 2016] GET /en/?edit_off => generated 17645 bytes in 675 msecs (HTTP/1.1 200) 10 headers in 608 bytes (1 switches on core 0)
+[pid: 6406|app: 0|req: 4/6] 107.170.0.159 () {44 vars in 880 bytes} [Sun May  8 07:10:14 2016] GET /en/?edit_off=true => generated 17606 bytes in 203 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+[pid: 6409|app: 0|req: 3/7] 107.170.0.159 () {42 vars in 1068 bytes} [Sun May  8 07:10:15 2016] GET /media/filer_public_thumbnails/filer_public/a0/4d/a04d39d2-4652-4daf-8530-d6fcd69895e9/black-hole.jpg__700x200_q85_crop_subsampling-2_upscale.jpg => generated 40391 bytes in 18 msecs via sendfile() (HTTP/1.1 200) 6 headers in 196 bytes (0 switches on core 0)
+Sun May  8 07:10:58 2016 - uWSGI worker 1 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sun May  8 07:10:58 2016 - uWSGI worker 2 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sun May  8 07:10:58 2016 - uWSGI worker 3 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sun May  8 07:10:58 2016 - uWSGI worker 4 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sun May  8 07:10:58 2016 - uWSGI worker 5 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+*** Starting uWSGI 2.0.12 (64bit) on [Sun May  8 07:11:02 2016] ***
+compiled with version: 4.7.2 on 05 May 2016 03:37:02
+os: Linux-3.2.0-4-amd64 #1 SMP Debian 3.2.54-2
+nodename: roidinev
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /root/blog2/polls
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /root/blog2
+your processes number limit is 3882
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /root/blog2/blog2.sock fd 3
+Python version: 2.7.3 (default, Mar 13 2014, 11:26:58)  [GCC 4.7.2]
+Set PythonHome to /root/Env/blog2
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x1896f40
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 436608 bytes (426 KB) for 5 cores
+*** Operational MODE: preforking ***
+/root/Env/blog2/local/lib/python2.7/site-packages/south/modelsinspector.py:20: RemovedInDjango19Warning: django.contrib.contenttypes.generic is deprecated and will be removed in Django 1.9. Its contents have been moved to the fields, forms, and admin submodules of django.contrib.contenttypes.
+  from django.contrib.contenttypes import generic
+
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x1896f40 pid: 6412 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 6412)
+spawned uWSGI worker 1 (pid: 6417, cores: 1)
+spawned uWSGI worker 2 (pid: 6418, cores: 1)
+spawned uWSGI worker 3 (pid: 6419, cores: 1)
+spawned uWSGI worker 4 (pid: 6420, cores: 1)
+spawned uWSGI worker 5 (pid: 6421, cores: 1)
+   New revision!!!! RELOAD!
+      cafaaf88-fc10-4993-9069-c66bc88717e8 (<type 'unicode'>)
+   -> None (<type 'NoneType'>)
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+[pid: 6418|app: 0|req: 1/1] 107.170.0.159 () {46 vars in 911 bytes} [Sun May  8 07:11:06 2016] GET /en/?edit_off=true => generated 17606 bytes in 760 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+   New revision!!!! RELOAD!
+      cafaaf88-fc10-4993-9069-c66bc88717e8 (<type 'unicode'>)
+   -> None (<type 'NoneType'>)
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+[pid: 6421|app: 0|req: 1/2] 107.170.0.159 () {46 vars in 1154 bytes} [Sun May  8 07:11:08 2016] GET /media/filer_public_thumbnails/filer_public/a0/4d/a04d39d2-4652-4daf-8530-d6fcd69895e9/black-hole.jpg__700x200_q85_crop_subsampling-2_upscale.jpg => generated 0 bytes in 143 msecs (HTTP/1.1 304) 4 headers in 130 bytes (1 switches on core 0)
+   New revision!!!! RELOAD!
+      cafaaf88-fc10-4993-9069-c66bc88717e8 (<type 'unicode'>)
+   -> None (<type 'NoneType'>)
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+reverse('my_test_app_view'): Reverse for 'my_test_app_view' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+[pid: 6417|app: 0|req: 1/3] 107.170.0.159 () {44 vars in 876 bytes} [Sun May  8 07:11:15 2016] GET /en/?edit => generated 33698 bytes in 895 msecs (HTTP/1.1 200) 9 headers in 526 bytes (1 switches on core 0)
+[pid: 6421|app: 0|req: 2/4] 107.170.0.159 () {42 vars in 1059 bytes} [Sun May  8 07:11:16 2016] GET /media/filer_public_thumbnails/filer_public/a0/4d/a04d39d2-4652-4daf-8530-d6fcd69895e9/black-hole.jpg__700x200_q85_crop_subsampling-2_upscale.jpg => generated 40391 bytes in 33 msecs via sendfile() (HTTP/1.1 200) 8 headers in 299 bytes (0 switches on core 0)
+/root/Env/blog2/local/lib/python2.7/site-packages/django/template/base.py:827: RemovedInDjango19Warning: `request.REQUEST` is deprecated, use `request.GET` or `request.POST` instead.
+  current = getattr(current, bit)
+
+/root/Env/blog2/local/lib/python2.7/site-packages/django/core/handlers/wsgi.py:126: RemovedInDjango19Warning: `MergeDict` is deprecated, use `dict.update()` instead.
+  self._request = datastructures.MergeDict(self.POST, self.GET)
+
+[pid: 6421|app: 0|req: 3/5] 107.170.0.159 () {44 vars in 933 bytes} [Sun May  8 07:11:30 2016] GET /en/admin/cms/page/?page_id=16&language=en => generated 8900 bytes in 282 msecs (HTTP/1.1 200) 9 headers in 526 bytes (1 switches on core 0)
+[pid: 6417|app: 0|req: 2/6] 107.170.0.159 () {46 vars in 977 bytes} [Sun May  8 07:11:31 2016] GET /en/admin/cms/page/get-tree/?language=en&pageId=&site=1 => generated 37239 bytes in 297 msecs (HTTP/1.1 200) 7 headers in 273 bytes (1 switches on core 0)
+[pid: 6421|app: 0|req: 4/7] 107.170.0.159 () {44 vars in 949 bytes} [Sun May  8 07:11:35 2016] GET /en/admin/cms/page/24/en/preview/ => generated 0 bytes in 32 msecs (HTTP/1.1 302) 8 headers in 345 bytes (1 switches on core 0)
+[pid: 6417|app: 0|req: 3/8] 107.170.0.159 () {44 vars in 944 bytes} [Sun May  8 07:11:36 2016] GET /en/poll-page/?edit&language=en => generated 19915 bytes in 257 msecs (HTTP/1.1 200) 9 headers in 526 bytes (1 switches on core 0)
+[pid: 6421|app: 0|req: 5/9] 107.170.0.159 () {44 vars in 955 bytes} [Sun May  8 07:11:37 2016] GET /en/admin/cms/page/?page_id=24&language=en => generated 8900 bytes in 156 msecs (HTTP/1.1 200) 9 headers in 526 bytes (1 switches on core 0)
+[pid: 6417|app: 0|req: 4/10] 107.170.0.159 () {46 vars in 977 bytes} [Sun May  8 07:11:37 2016] GET /en/admin/cms/page/get-tree/?language=en&pageId=&site=1 => generated 37239 bytes in 347 msecs (HTTP/1.1 200) 7 headers in 273 bytes (1 switches on core 0)
+[pid: 6421|app: 0|req: 6/11] 107.170.0.159 () {44 vars in 880 bytes} [Sun May  8 07:11:39 2016] GET /en/admin/cms/page/resolve/?model=&pk= => generated 0 bytes in 28 msecs (HTTP/1.1 200) 7 headers in 259 bytes (1 switches on core 0)
+[pid: 6421|app: 0|req: 7/12] 107.170.0.159 () {44 vars in 922 bytes} [Sun May  8 07:12:02 2016] GET /en/admin/polls/poll/add/ => generated 10275 bytes in 106 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+[pid: 6417|app: 0|req: 5/13] 107.170.0.159 () {42 vars in 794 bytes} [Sun May  8 07:12:03 2016] GET /en/admin/jsi18n/ => generated 2372 bytes in 27 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+[pid: 6421|app: 0|req: 8/14] 107.170.0.159 () {52 vars in 1171 bytes} [Sun May  8 07:13:15 2016] POST /en/admin/polls/poll/add/ => generated 0 bytes in 102 msecs (HTTP/1.1 302) 10 headers in 657 bytes (1 switches on core 0)
+[pid: 6417|app: 0|req: 6/15] 107.170.0.159 () {46 vars in 1099 bytes} [Sun May  8 07:13:15 2016] GET /en/admin/polls/poll/ => generated 6619 bytes in 138 msecs (HTTP/1.1 200) 9 headers in 477 bytes (1 switches on core 0)
+[pid: 6421|app: 0|req: 9/16] 107.170.0.159 () {42 vars in 790 bytes} [Sun May  8 07:13:16 2016] GET /en/admin/jsi18n/ => generated 2372 bytes in 31 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+[pid: 6417|app: 0|req: 7/17] 107.170.0.159 () {44 vars in 880 bytes} [Sun May  8 07:13:16 2016] GET /en/admin/cms/page/resolve/?model=&pk= => generated 0 bytes in 55 msecs (HTTP/1.1 200) 8 headers in 390 bytes (1 switches on core 0)
+[pid: 6421|app: 0|req: 10/18] 107.170.0.159 () {46 vars in 964 bytes} [Sun May  8 07:13:17 2016] GET /en/poll-page/?edit&language=en => generated 19987 bytes in 549 msecs (HTTP/1.1 200) 9 headers in 526 bytes (1 switches on core 0)
+[pid: 6417|app: 0|req: 8/19] 107.170.0.159 () {50 vars in 1065 bytes} [Sun May  8 07:13:27 2016] POST /en/admin/cms/page/24/change-navigation/ => generated 1 bytes in 143 msecs (HTTP/1.1 200) 7 headers in 273 bytes (2 switches on core 0)
+[pid: 6421|app: 0|req: 11/20] 107.170.0.159 () {44 vars in 880 bytes} [Sun May  8 07:13:28 2016] GET /en/admin/cms/page/resolve/?model=&pk= => generated 0 bytes in 36 msecs (HTTP/1.1 200) 7 headers in 259 bytes (1 switches on core 0)
+[pid: 6417|app: 0|req: 9/21] 107.170.0.159 () {46 vars in 964 bytes} [Sun May  8 07:13:28 2016] GET /en/poll-page/?edit&language=en => generated 20197 bytes in 259 msecs (HTTP/1.1 200) 9 headers in 526 bytes (1 switches on core 0)
+[pid: 6421|app: 0|req: 12/22] 107.170.0.159 () {44 vars in 900 bytes} [Sun May  8 07:13:31 2016] GET /en/poll-page/ => generated 19982 bytes in 198 msecs (HTTP/1.1 200) 8 headers in 395 bytes (2 switches on core 0)
+[pid: 6417|app: 0|req: 10/23] 107.170.0.159 () {44 vars in 863 bytes} [Sun May  8 07:13:38 2016] GET /en/ => generated 33832 bytes in 318 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+[pid: 6421|app: 0|req: 13/24] 107.170.0.159 () {42 vars in 1054 bytes} [Sun May  8 07:13:39 2016] GET /media/filer_public_thumbnails/filer_public/a0/4d/a04d39d2-4652-4daf-8530-d6fcd69895e9/black-hole.jpg__700x200_q85_crop_subsampling-2_upscale.jpg => generated 40391 bytes in 23 msecs via sendfile() (HTTP/1.1 200) 8 headers in 299 bytes (0 switches on core 0)
+[pid: 6417|app: 0|req: 11/25] 107.170.0.159 () {44 vars in 873 bytes} [Sun May  8 07:13:42 2016] GET /en/poll-page/ => generated 20195 bytes in 266 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+[pid: 6421|app: 0|req: 14/26] 107.170.0.159 () {44 vars in 897 bytes} [Sun May  8 07:14:06 2016] GET /en/admin/polls/poll/ => generated 6458 bytes in 133 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+[pid: 6417|app: 0|req: 12/27] 107.170.0.159 () {42 vars in 790 bytes} [Sun May  8 07:14:07 2016] GET /en/admin/jsi18n/ => generated 2372 bytes in 29 msecs (HTTP/1.1 200) 7 headers in 264 bytes (1 switches on core 0)
+[pid: 6421|app: 0|req: 15/28] 107.170.0.159 () {44 vars in 863 bytes} [Sun May  8 07:14:10 2016] GET /en/admin/cms/page/resolve/?model=&pk= => generated 0 bytes in 26 msecs (HTTP/1.1 200) 7 headers in 259 bytes (1 switches on core 0)
+[pid: 6421|app: 0|req: 16/29] 123.116.242.62 () {44 vars in 884 bytes} [Sun May  8 14:56:35 2016] GET /en/poll-page/ => generated 20195 bytes in 256 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+[pid: 6417|app: 0|req: 13/30] 123.116.242.62 () {44 vars in 952 bytes} [Sun May  8 14:56:36 2016] GET /en/squid-access-log-parse-and-spark-processing/ => generated 30593 bytes in 385 msecs (HTTP/1.1 200) 8 headers in 395 bytes (2 switches on core 0)
+[pid: 6421|app: 0|req: 17/31] 123.116.242.62 () {44 vars in 918 bytes} [Sun May  8 14:56:41 2016] GET /en/poll-page/ => generated 20195 bytes in 324 msecs (HTTP/1.1 200) 8 headers in 395 bytes (2 switches on core 0)
+[pid: 6417|app: 0|req: 14/32] 123.116.242.62 () {50 vars in 1049 bytes} [Sun May  8 14:56:46 2016] POST /en/admin/cms/page/24/change-navigation/ => generated 1 bytes in 100 msecs (HTTP/1.1 200) 7 headers in 273 bytes (1 switches on core 0)
+[pid: 6421|app: 0|req: 18/33] 123.116.242.62 () {44 vars in 864 bytes} [Sun May  8 14:56:46 2016] GET /en/admin/cms/page/resolve/?model=&pk= => generated 0 bytes in 17 msecs (HTTP/1.1 200) 7 headers in 259 bytes (1 switches on core 0)
+[pid: 6417|app: 0|req: 15/34] 123.116.242.62 () {46 vars in 915 bytes} [Sun May  8 14:56:47 2016] GET /en/poll-page/ => generated 19985 bytes in 213 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+[pid: 6421|app: 0|req: 19/35] 123.116.242.62 () {44 vars in 864 bytes} [Sun May  8 14:56:59 2016] GET /en/ => generated 33832 bytes in 369 msecs (HTTP/1.1 200) 8 headers in 395 bytes (2 switches on core 0)
+[pid: 6417|app: 0|req: 16/36] 123.116.242.62 () {42 vars in 1055 bytes} [Sun May  8 14:57:02 2016] GET /media/filer_public_thumbnails/filer_public/a0/4d/a04d39d2-4652-4daf-8530-d6fcd69895e9/black-hole.jpg__700x200_q85_crop_subsampling-2_upscale.jpg => generated 40391 bytes in 44 msecs via sendfile() (HTTP/1.1 200) 8 headers in 299 bytes (0 switches on core 0)
+[pid: 6421|app: 0|req: 20/37] 123.116.242.62 () {44 vars in 942 bytes} [Sun May  8 14:57:16 2016] GET /en/squid-access-log-parse-and-spark-processing/ => generated 30593 bytes in 316 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 0)
+Sun May  8 15:35:32 2016 - uWSGI worker 1 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sun May  8 15:35:32 2016 - uWSGI worker 2 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sun May  8 15:35:32 2016 - uWSGI worker 3 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sun May  8 15:35:32 2016 - uWSGI worker 4 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sun May  8 15:35:32 2016 - uWSGI worker 5 screams: UAAAAAAH my master disconnected: i will kill myself !!!
