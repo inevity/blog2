@@ -1,0 +1,1557 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.9" />
+<title>目录项缓存架构设计</title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+.monospaced, code, pre {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+  padding: 0;
+  margin: 0;
+}
+pre {
+  white-space: pre-wrap;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; vertical-align: text-bottom; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+
+
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install();
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+<h1>目录项缓存架构设计</h1>
+<span id="author">Baul</span><br />
+<span id="email"><code>&lt;<a href="mailto:roidinev@gmail.com">roidinev@gmail.com</a>&gt;</code></span><br />
+<span id="revnumber">version 1.0,</span>
+<span id="revdate">201405</span>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_简介">简介</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>基于readdir-ahead,强化目录项缓存</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_原理">原理</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>网络和brick是瓶颈时，需要caching。
+通过lookup／readdirp,可以通过真实操作的触发，也可以通过积极主动的提前抓取。进行目录项的缓存。通过changlog机制进行更新同步。
+参照inodecache（基于inode进行的持久缓存）</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_目的">目的</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>强化fuse端缓存能力</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_目录项的缓存后端机制">目录项的缓存后端机制</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>一般有data／metadata（inode携带）／目录项entry。我们这里主要考虑目录项，单个目录项（lookup）和一个目录的完整目录项两种情况（满足ls／readdir目录）。</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+利用xdata dict／memcache ／db/dcache(hash table)等。
+</p>
+</li>
+<li>
+<p>
+缓存什么 在哪儿缓存
+</p>
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+目前的glusterf的模块图
+vfs-fuse-readddirahead-dht-repelication-client-server-lock- posix xl
+</p>
+</li>
+<li>
+<p>
+当前xl readdir－ahead client收到的是此目录项链表gf_dirent_t 。并逐项（保持顺序和offset）缓存到此xl的ctx中的目录项链表中。
+list_add_tail(&amp;dirent&#8594;list, &amp;ctx&#8594;entries.list);
+</p>
+</li>
+<li>
+<p>
+我们缓存什么呢？在client也缓存这个东西。但是在服务器端应该缓存什么呢？在posix xl 层，系统内部用的是dcache，但是它不能预抓取目录项，只是以前lookup的可以在其中缓存。
+可能需要在posix xl
+的左边做个主动的缓存（用readdirp／lookup来做，为了加速查找dentry，也许可以参考dcache的方法），进行缓存（缓存什么结构）。在经过afr／dht后进行目录项的合并汇
+总。这个缓存应该放在哪呢（lock xl的左边还是右边）
+在client缓存时，目录项缓存xl模块放在dht的上面，即左边。
+</p>
+<div class="olist loweralpha"><ol class="loweralpha">
+<li>
+<p>
+DHT读目录的问题：需要顺序（1/2/3/4个dht节点顺序返回同一个目录的结果），可否并发，这个问题以后考虑。因为如果在dht的上面作个缓存，即咱们要做的，就不用考虑这个顺序性能低的问题。
+</p>
+</li>
+</ol></div>
+</li>
+<li>
+<p>
+在服务端，或者单独一个client，做一个中央缓存架构，其他客户端的缓存请求都路由到这或者一开始提前把缓存从这个机器转移到客户自己的client机器上。。这里要保证这个中央缓存必须绝对一致性和高可靠性。一致性的问题分多个client的cache一致性问题和控制和发布缓存失效的lock／lease的一致性问题。。见《一致性模型讨论》和《基本概念和正常／异常操作的流程设计》。缓存系统的高可用性问题我们采用HA和changlog机制。具体见《Availability》
+</p>
+</li>
+</ol></div>
+</li>
+<li>
+<p>
+替换策略 如何替换 lru，？？
+  根据超时lru，全部缓存兼同步修改，启发式
+</p>
+</li>
+<li>
+<p>
+预抓取
+</p>
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+对于服务器目录项端缓存
+我们在后台利用readdirp（在posix层）进行积极的抓取（需分析竞态条件）。基于本身glusterfs 的架构来实现，我们暂时不做中央缓存（对于服务器端），即考虑分布式缓存，对于目录的目录项和目录本身，需要考虑缓存一致性问题。对于replication集合的中brick（存储服务器），对于脑裂情况下的目录，不进行缓存。对于正常目录进行两个或三个机器的缓存一致性的处理。这里的问题可能有些复杂。（在异常情况下）需要调研
+</p>
+</li>
+<li>
+<p>
+对于client目录项缓存
+在client目录项缓存xl层生成独立后台守护进程进行目录项缓存的收集并存储。且根据自身和brick的通知进行缓存项的更新和失效。（首先内存，然后同步硬盘（SSD？））
+</p>
+</li>
+</ol></div>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_缓存初步架构设计">缓存初步架构设计</h2>
+<div class="sectionbody">
+<div class="ulist"><div class="title">在哪个部分缓存</div><ul>
+<li>
+<p>
+客户端
+</p>
+</li>
+<li>
+<p>
+客户端和服务端都有
+</p>
+</li>
+<li>
+<p>
+客户端只做路由
+</p>
+</li>
+</ul></div>
+<div class="ulist"><div class="title">cache类型</div><ul>
+<li>
+<p>
+Cooperative cache）brick间）
+</p>
+</li>
+<li>
+<p>
+Hierarchical Caches
+</p>
+</li>
+<li>
+<p>
+Content-Sharing Among Peers
+</p>
+</li>
+<li>
+<p>
+local缓存／分布式缓存
+</p>
+</li>
+</ul></div>
+<div class="ulist"><div class="title">讨论：</div><ul>
+<li>
+<p>
+中央缓存架构／单clientlocal的缓存架构
+需要一个中央节点做缓存，可能需要一个独立的锁／token／lease服务器，需要一个独立的节点来缓存所有的元数据和目录等信息。其他客户端client可以提前加载这个机器的缓存或者路由到这里。
+我们大的架构基于这个。
+</p>
+</li>
+<li>
+<p>
+分布式缓存架构：？
+存储服务器本身的缓存。需要cache的协作和合并。
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_一致性模型讨论">一致性模型讨论</h2>
+<div class="sectionbody">
+<div class="olist arabic"><div class="title">cache一致性问题：多client cache/分布式缓存一致性问题 大量缓存节点，一个源头。</div><ol class="arabic">
+<li>
+<p>
+发送失效或者update ，pull ／push。
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+pushed基,brick通知所有client。（失效／更新）经常用的对象用更新，不常用的就失效。brick保留缓存状态。服务端通知客户端方法(getattr/client_t)
+</p>
+</li>
+<li>
+<p>
+pull基，client周期查询服务器，缓存是否正确。设定poll时间间隔.基于历史workload，动态决定inteval
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+服务器不保留缓存状态。
+</p>
+</li>
+<li>
+<p>
+弱一致性 ，大量的消息负载。
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+混合方法,基于lease,client发送第一个请求，发送lease请求。服务器授权。服务器一段时间后失效或者更新混存。这个lease时间根据负载或者其他决定。
+</p>
+</li>
+<li>
+<p>
+其他
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+token
+</p>
+</li>
+<li>
+<p>
+nfs :放宽一致性,最松
+</p>
+</li>
+<li>
+<p>
+基于时间等等。
+</p>
+</li>
+<li>
+<p>
+Adaptive leases: A strong consistency mechanism for the world wide web
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</li>
+</ol></div>
+<div class="olist arabic"><div class="title">replicate set 内部lock一致性问题</div><ol class="arabic">
+<li>
+<p>
+对于afr／nsr／disperse的情况，在失败情况下会出现lock／lease state一致性问题，这跟其他状态包括数据本身的一致性问题相同。 
+如果caching处于afr等之上，我们怎么保证在失败后，活着的replica member上的锁状态的是否一致或者足够一致？ 
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+最坏情况下，出现脑裂。 对于锁状态绝对会容易脑裂状态，就像inode（如果是整文件粒度的锁） 
+</p>
+</li>
+<li>
+<p>
+最简单的情形是一个brick失败。在这种情况下，一旦重连，客户端应该重新获取以前的owership。类似与当前的open fd的的实现。
+</p>
+</li>
+<li>
+<p>
+如果我们允许某种数据丢失，就不会脑裂。比如在断开的情况但节点没有fail。 
+</p>
+</li>
+<li>
+<p>
+关于brick restart，我们也许需要个优雅超时机制 。
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+replicate set中的哪个brick实际发送失效命令。基本上是leader election的形式。本质是锁／lease一致性问题。即在afr情况下，没有哪个brick是特殊的。怎样选择一个或者通过所有brick来协调？
+nfr有一个leader和leader／follower一致性协议。So，nsr刚好在这方面有所实现。
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+afr审核失效命令并向上传递单独的一个通知.因为没有更多的brick拥有那个inode。我们实际上可以选择个leader，即使在afr情况下。然后非leades将通过这个leader转发他们发起的失效。这些失效组合起来，客户端就不需要直接处理单个的失效。可以以那种方式减少网络交互。 问题：如果afr决定要改变leader，原来leader管理的当前的ownership怎么办？ 
+</p>
+</li>
+<li>
+<p>
+最简单的情况是接受req的那个replica brick来发送合适的失效命令。而在其他地方实现某种重复拒绝的机制,让客户端自己来检测／拒绝重复的失效命令。 (可以借鉴Duplicate Request Cache (DRC）)
+</p>
+</li>
+<li>
+<p>
+也许从所有bricks发送通知没有啥大的问题。不会有大的问题。在任何配置下最多就2或3个brick，对于disperse xlator，这个个数可能更多。 
+</p>
+</li>
+<li>
+<p>
+实际控制inode 的ownership的是brick。把某些控制能力交给afr，可能把事情弄复杂了。但是
+在这里锁一致性的问题与其他一的致性问题是相同的。这里即就是说在afr中至少锁一致性问题应该很有挑战。
+因为在最后，如果是nsr或者afr等类似的，缓存／或者锁协议需要在这些xlator之上操作。
+</p>
+</li>
+</ul></div>
+</li>
+</ol></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_availability">Availability</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+changelog就是editlog。
+</p>
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+对目录项缓存，就是元数据等处理。分为一个完整版本的file或者存储的地方和changelog。大量的元数据不能有效的读，可以采取changelog方式。每次操作，把元数据缓存放到一个changelog里
+当缓存服务器dead后并启动时，可以把changelog应用到完成版本的file上尽可能恢复元数据。与log－struct fs和journal 文件系统类似。
+</p>
+<div class="olist loweralpha"><ol class="loweralpha">
+<li>
+<p>
+changlog不能太大10-100字节，延迟缓存节点的启动。（可以看看glusterfs在geo－rep里用的changlog xl。如何使用）。随着changlog的累积，需要把完整版元数据file和changglog进行合并生成一个新的完成版的元数据file（叫做checkpointing）。直接从内存中加载这个fsimage减少了启动时间。
+</p>
+</li>
+<li>
+<p>
+reapp changelog耗磁盘和cpu。因此需要把这个活交到另一个元数据缓存服务器来做。当前这个继续服务用户。有两种方法，一种HA架构，共享存储一种是非HA，非共享存储架构，需要changlog传输。
+我们采取第一种，存储采用共享存储。
+</p>
+</li>
+</ol></div>
+</li>
+<li>
+<p>
+触发这个checkpoint动作，可以基于时间，基于changlog事务的大小。
+</p>
+</li>
+<li>
+<p>
+这个client缓存我们可以在两个存储节点（任意两个）或者单独两个机器。
+其他用户client可以路由到这个元数据缓存或者直接加载这个服务器的元数据缓存（要考虑到元数据的一致性）。
+<a href="https://blog.cloudera.com/blog/2014/03/a-guide-to-checkpointing-in-hadoop/">https://blog.cloudera.com/blog/2014/03/a-guide-to-checkpointing-in-hadoop/</a>
+</p>
+</li>
+</ol></div>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_基本概念和正常_异常操作的流程设计">基本概念和正常／异常操作的流程设计</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>区分inode读和写，参考dht／afr，把op归类。目前主要考虑读目录的实现，以后考虑所有fop。</p></div>
+<div class="ulist"><div class="title">无锁架构</div><ul>
+<li>
+<p>
+无锁方法，当前多个client存取同一个inode时，需要inodelk／entrylk锁。
+与此建议相关的一个patch
+<a href="http://review.gluster.org/#/c/6978/">http://review.gluster.org/#/c/6978/</a> ，一致性ipc原型
+可以用来long polling得到server to client 通知。Server to client通知用来对client独占的事项进行失效。
+</p>
+</li>
+<li>
+<p>
+client_t结构使用
+</p>
+</li>
+<li>
+<p>
+利用getfattr的操作（参考DFC）
+</p>
+</li>
+</ul></div>
+<div class="ulist"><div class="title">基于无锁架构的积极缓存</div><ul>
+<li>
+<p>
+基本上是让clients临时对inodes有完全的控制，不需要持续的发送req到bricks。基本取代了inodelk和entrylk fops。在client更加积极的缓存实现
+</p>
+</li>
+<li>
+<p>
+具体概念和流程
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+每个inode有两个独立的access级别，一个针对数据，一个针对元数据，对于目录项，需要的是父目录的inode的access信息。另外，许多安全检查，posix相容性，其他方面等也需要在client进行。这样许多req就可以直接在client服务。
+</p>
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+inode具有属性（可修改，独占，共享，invalid失效 M - Modified, E - Exclusive, S - Shared, I - Invalid)四个属性，即client对此inode的权限。实际控制inode 的ownership的是brick。inode开始时处于失效状态。client需要写某个inode，就需要请求所有（特定brick或存储服务器）来授权对此inode的独占E。一旦授权，client就会在本地执行写。以后的在本地clien的读写操作就会直接在此client执行，不需要到存储端。如果写成功了，inode状态就在本地改变为M状态。然后背景传到存储端。如果不再需要此inode，就变为失效状态。这些状态都在client来修改。但是必须通过所有储服务器其的协调来处理，即要授权和知道哪个client拥有对某inode的具体权限。针对目录项和文件，需要注意其的不同，对于目录项，涉及所有brick，对于数据，就是那个有数据的brick（replication集合）。
+</p>
+</li>
+</ol></div>
+</li>
+<li>
+<p>
+最容易的部分：在正常情况下没有节点失败和其他错误下。
+</p>
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+主要概念是，在处理req前，每个client将从相关的inode中检查是否有足够的信息，可以保证req可以在本地处理（例如，至少是共享存取到一个inodefor read或者独占存取到一个indoefor write）。如果信息足够，将立即处理此req并返回到上层的xlator，对于写op，将在背景执行。
+如果客户端没有足够的信息。它可以附加东西在req上告诉bricks需要某个inode的哪种存取级别。默认下，op需要一个特别的存取级别（比如读是共享存取，写是独占存取），但是也可以请求较弱的存取级别。另外，对于独占级别的req，需要指定请求的空间。这个值用来让brick来预留给client的写的空间。需要控制write的可用的空间，允许在client本地执行，但当brick上的可用空间变少了，可以禁用独占存取的req。也可以对多个inode确定存取级别（renameop用）。这个存取级别信息放到xdata参数里的一项里。然后req就发到bricks。client就等待直到接受到回复。
+</p>
+</li>
+<li>
+<p>
+bricks以三种方式来应答：
+</p>
+<div class="olist upperroman"><ol class="upperroman">
+<li>
+<p>
+不能得到对应的inode的存取级别，op不能处理
+</p>
+</li>
+<li>
+<p>
+op处理成功（即使op 结果是error），但是存取级别没有授予。
+</p>
+</li>
+<li>
+<p>
+op处理成功，存取级别授权给client。
+</p>
+</li>
+</ol></div>
+</li>
+<li>
+<p>
+如果涉及多个inode，有些授权了，有些没有／／或者一个brick授权了，一个没有。都算存取级别没有授权成功。
+</p>
+</li>
+<li>
+<p>
+如果access被拒绝了，但req成功了，表示未来的相同inode的req需要携带额外的存取级别请求的信息发 送到brick。
+</p>
+</li>
+<li>
+<p>
+这也给brikcs更多的控制能力不授权某个inode的到多个client。
+包含access info 的req必须严格排序保证所有的bricks以相同的顺序来处理这个req。在背景执行的req（因为client已经独占存取）可以按任意顺序执行。
+</p>
+</li>
+<li>
+<p>
+某些fops的细节
+open／opendir。openflag可以用来确定存取级。
+但一个inode的最后一个fd释放，当前的ownership也要释放。（比如设置cache 项为invaid）。不基于fd的缓存，在fd关闭时不释放这个缓存。
+即使client 独占存取某个inode，同步操作flsush／fsync／fsyncdir也需要同步sent。
+</p>
+</li>
+</ol></div>
+</li>
+<li>
+<p>
+困难部分：something fail
+</p>
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+最大的问题就是当一个有独占存取的client die，或者一个client失去链接或者brick有问题。
+</p>
+<div class="olist upperroman"><ol class="upperroman">
+<li>
+<p>
+当一个brick dies
+所有client停止接收回复。这个要考虑，当前依赖与volume type。当brikc online重连，每个client拥有的存取级需要重新请求（类似与当前的reopen fd实现）。如果任何的还原owership失败，客户端就认为失去对此inode的存取授权，以后的req需要重新获取授权。
+</p>
+</li>
+<li>
+<p>
+当一个client dies
+如果此client没有任何inode的owernship，没啥。
+如果有独占存取的，所有的brick需要通知此client。当有其他client 的req（共享或独占）。这个通知有个timetout。如果在一定时间内这个client不回应。那么这个client将失去权限。这可能导致数据丢失。但是由于caching是writethrough，且flush，fsync，fsyncdir是同步执行的，数据丢失的可能很小，且posix语义允许这么作。
+当client重连时，它正常执行。它会接收一些失效的通知（它没有了），它仅仅ack这个通知。
+对于clientdies，导致客户端锁很久以后才释放，目前有个commit，利用了内核tcp参数，在client有锁且die的情况下，brick可以很快重新获取到锁。这个commit可以用到这儿。
+</p>
+</li>
+<li>
+<p>
+当client 断开链接，但没有die
+基本与上面情况相同，但是当client 重连时，它将恢复原来的ownership。如果没啥改变，它将恢复他们。否则，某些inode的需要失效。任何要在失效的inode的上进行的op也将失去。
+</p>
+</li>
+</ol></div>
+</li>
+</ol></div>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_异常操作的处理">异常操作的处理</h2>
+<div class="sectionbody">
+</div>
+</div>
+<div class="sect1">
+<h2 id="_失效_故障恢复的处理机制">失效／故障恢复的处理机制</h2>
+<div class="sectionbody">
+</div>
+</div>
+<div class="sect1">
+<h2 id="_锁机制_无锁架构的_具体实现_操作协调">锁机制／无锁架构的（具体实现）（操作协调）</h2>
+<div class="sectionbody">
+<div class="ulist"><div class="title">锁服务实现</div><ul>
+<li>
+<p>
+entrylk/inodlk 锁服务
+</p>
+</li>
+<li>
+<p>
+chubby／token／lease机制
+</p>
+</li>
+<li>
+<p>
+一个中心。
+</p>
+</li>
+<li>
+<p>
+基于共享存储的锁服务
+</p>
+</li>
+</ul></div>
+<div class="ulist"><div class="title">无锁机制</div><ul>
+<li>
+<p>
+见上和调研
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_测试与验证">测试与验证</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Cache Misses</p></div>
+<div class="paragraph"><p>Cache Effectiveness</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_todo">todo</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>lk实现
+gpfs token
+hdfs center cache／changelog／gfs 内存元数据
+readdir－ahead的缓存利用
+caching 头脑风暴
+dcache／btree</p></div>
+<div class="paragraph"><p>哪些信息需要缓存，哪些不需要 哪些具有相同的失效／恢复语义，因此可以抽象的。
+samba ／nfs4的方法借鉴 特别是失效／恢复机制。</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_参考资料">参考资料</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>the caching/SMB connection
+caching/NFS
+cachng／otherpallfs／hystack
+Caching, depending on the protocols used, allows for the implementation of Oplocks/Leases/Reservations, for the correct
+metadata caching protocols came in with SMB3
+NFSv4
+Thatʼs a RWH lease in SMB land</p></div>
+<div class="paragraph"><p>xavih: ira: something similar to NFSv4 delegations should be a good solution for SMB oplocks ?
+(08:40:03 PM) ira: Well, weʼll need to design a base that can do both.</p></div>
+<div class="paragraph"><p>So Xaviʼs idea is to cache some (which?) combination of data/inode/entry info under locks/leases (which?) to address both the functional and performance issues.
+(08:40:24 PM) ira: I donʼt know the NFSv4 protocol semantics.
+(08:40:56 PM) hagarth: ira: from what I understand, we should be able to have a common framework for both NFSv4 and SMB use cases.
+(08:41:28 PM) xavih: well, basically the idea I had is to attach some additional information to each request that informs the brick which access the client desires</p></div>
+<div class="paragraph"><p>(08:43:00 PM) jdarcy: Are NFSv4 delegations lease-like, or indefinite?
+(08:46:34 PM) ira: Also, we should be thinking about how the FUSE client can profit here&#8230;.
+(08:47:08 PM) xavih: ira: the main profit for fuse will be the possibility to implement aggressive caching translators on the client side
+(08:47:13 PM) hagarth: the fuse client can look at implementing local caching
+(08:47:21 PM) jdarcy: One possible complication is that NFSv4 also defines transaction-like composite operations (though IIRC they use another term). That means piggybacking cache ops on others might be tricky. Might need to be separate first-class ops themselves.</p></div>
+<div class="paragraph"><p>(08:48:15 PM) ***jdarcy mumbles something about CacheFS.
+(08:50:34 PM) jdarcy: So we might be able to learn from it, but I doubt itʼs worth interacting with it directly.
+(08:51:16 PM) hagarth: jdarcy: right
+(08:51:27 PM) ira: hagarth: The invalidations, and handling them right, really matter. Especially for SMB.
+(08:51:28 PM) jdarcy: The other big question is: where is the lock/lease state stored (so we can issue the right invalidations), and how does it survive failures.
+#topic discussion on xavih&#8217;s proposal
+15:30:56 &lt;hagarth&gt; #link <a href="http://lists.gnu.org/archive/html/gluster-devel/2014-02/msg00004.html">http://lists.gnu.org/archive/html/gluster-devel/2014-02/msg00004.html</a>
+15:31:14 * purpleidea is joining late, sorry</p></div>
+<div class="paragraph"><p><a href="http://meetbot.fedoraproject.org/gluster-meeting/2014-02-12/gluster-meeting.2014-02-12-15.00.log.html">http://meetbot.fedoraproject.org/gluster-meeting/2014-02-12/gluster-meeting.2014-02-12-15.00.log.html</a>
+cache框架建议
+hagarth&gt; topic discussion on xavih&#8217;s proposal
+15:30:56 &lt;hagarth&gt; #link <a href="http://lists.gnu.org/archive/html/gluster-devel/2014-02/msg00004.html">http://lists.gnu.org/archive/html/gluster-devel/2014-02/msg00004.html</a>
+1，与此建议相关的一个patchhttp://review.gluster.org//c/6978/ ，一致性ipc原型
+可以用来long polling得到server to client 通知。Sto client通知用来对client独占的事项进行失效。
+2.基本上是让clients临时对inodes有完全的控制，一便不需要持续的发送req到bricks。
+基本取代了inodelk和entrylk fops。在client更加积极的缓存实现</p></div>
+<div class="paragraph"><p>Nfsv4的delegations和callbacks与这很相似。
+smb也有相似的概念。
+每个dfs都有实现。
+我们是否设置个标准在all dfs？
+每个dfs有相当差别的data 对象，不同的semantics。应该很难标准化。
+[Gluster-devel] Caching-proposal brainstorm
+<a href="http://lists.gnu.org/archive/html/gluster-devel/2014-02/msg00097.html">http://lists.gnu.org/archive/html/gluster-devel/2014-02/msg00097.html</a>
+Logs from this meeting are here:</p></div>
+<div class="paragraph"><p><a href="http://titanpad.com/caching-proposal-brainstorm">http://titanpad.com/caching-proposal-brainstorm</a>
+<a href="http://titanpad.com/caching-proposal-brainstorm">http://titanpad.com/caching-proposal-brainstorm</a></p></div>
+<div class="paragraph"><p>1entrylk／inodelk机制
+函数所在，还有server端locks 的实现。
+2.readdir－aheda entry
+3.caching框架 imca／fuse／合并
+当前indoelk和entrylk用来在所有bricks间同步，避免在多客户端并发操作相同的inode的情况下数据或者元数据损坏的情况。认为引入了很大的负载来避免很少发生的情形。也限制了cleint端的缓存的优势。</p></div>
+<div class="paragraph"><p>需要解决的问题跟很久以前的mpfs解决的问题类似。不论同步是否使用锁，本地其实是无意义的，因为最困难的问题就是去恢复分布式的state。当一个持有任何状态的inode的brickfail的话，会出现什么情况？我们怎么识别她，怎么处理，当brick恢复，需要重新获取原来的状态，我们如何处理？怎么保证brick可以成功flushcache？可能需要流控，本身是个大项目。不是不可能，但需要多个人来协作，其他项目情况类似，比如ceph／xtreemfs，也采用了相同的方法。glusterfs历史上避免了这个复杂性，有些缺点。但是保证了在其他方面进展很快。</p></div>
+<div class="paragraph"><p>1 if a client dies or loses communication while it
+holds a lock on a file.
+2，为什么gethash，不能读写。而其他能够
+Of course there is a lot of work solving all potential failures and
+designing the right thing. An important consideration is that all
+these methods try to solve a problem that is seldom found (i.e. having
+more than one client modifying the same file at the same time). So a
+solution that has almost 0 overhead for the normal case and allows the
+implementation of aggressive caching mechanisms seems a big win.</p></div>
+<div class="paragraph"><p>设计此缓存机制需要，首先，需要实现一个框架细节，特别是服务器发起的消息到cleint来失效和撤销。我们怎么找到来自服务器的消息中提到的特定的xltor。当前对client_t的改变允许服务端xltor得到一个handle（就是client_t 对象），以此消息可以提交回client。
+这样的框架也是实现oplock（可能还有leases）必须的。</p></div>
+<div class="paragraph"><p>可以用来避免per－operation的inodelks，encryption／crypt，afr的xlator可以利用较少负载。看起来很能有有个公共的框架来授权锁给client，然后在其上构建缓存一致性协议／oplocks／inodelk  avoidence。</p></div>
+<div class="paragraph"><p>任何caching／lease／oplock等协议的实现，是需要sending message back。
+原来使用一些特殊的getxattr req用来sending 消息到client。disperse采用的。</p></div>
+<div class="paragraph"><p>自己提出问题，解决方案，讨论
+开始思考实现细节
+<a href="http://lists.nongnu.org/archive/html/gluster-devel/2014-02/msg00054.html">http://lists.nongnu.org/archive/html/gluster-devel/2014-02/msg00054.html</a>
+基本简单的情况
+失败情况
+结构化表述和零散表达</p></div>
+<div class="paragraph"><p>his sounds very much like "delegations and callbacks" in NFSv4. It is
+an optional feature that servers do not need to support, and some
+clients can not support easily (think of firewalls blocking callbacks).
+The RFC for NFSv4 documents the feature pretty well:
+- <a href="http://tools.ietf.org/html/rfc3530#section-9.2">http://tools.ietf.org/html/rfc3530#section-9.2</a></p></div>
+<div class="paragraph"><p>I&#8217;d surely be interested in seeing something similar for the GlusterFS
+protocol, it definitely improved performance for certain workloads on
+NFS.</p></div>
+<div class="paragraph"><p>Cache Systems
+Distributed Cache Systems
+Distributed Cache Systems
+• Locality principles still drive the design process, j
+ust like in the
+non distributed case…
+• …but now distribution raises a number of additional issu
+es…
+– high/unpredictable communication latency:
+• we don’t want highly/unpredictable inconsistent ca
+ches!
+– possibility for cooperation among caches, but…
+– …need for system autonomy despite single caches failu
+res
+– mutual effect of mutliple caching tiers on actual
+miss rates:
+• trickle-down effect
+– trackability:
+• how many hits on my web page?
+– security, just like in any distributed data replication
+scheme</p></div>
+<div class="paragraph"><p>• The consistency requirements play a fundamental ro
+le in the
+design of a distributed cache management scheme…
+• Discussing the manifold formal consistency models
+presented in
+literature is out of the scope of this course - you’
+re already
+seeing them in the Distributed Systems course.
+• We’ll rather take a pragmatical approach and analyz
+e two case
+studies representative of weak and strong consisten
+cy
+constraints:
+– WWW Caching
+– Transactional Caching</p></div>
+<div class="paragraph"><p><a href="http://www.dis.uniroma1.it/~ciciani/DIDATTICA/ARCHITETTURE/distributed_caching_schemes.pdf">http://www.dis.uniroma1.it/~ciciani/DIDATTICA/ARCHITETTURE/distributed_caching_schemes.pdf</a></p></div>
+<div class="paragraph"><p>Replacement policy
+what objects to retain in cache
+?
+• Large vs. small, relative importance of popularity
+ and stability
+– Deployment: where to place the cache?
+• Close to server or client?
+– How many users per cache?
+– Prefetching?</p></div>
+<div class="paragraph"><p><a href="http://www.dis.uniroma1.it/~ciciani/DIDATTICA/ARCHITETTURE/">http://www.dis.uniroma1.it/~ciciani/DIDATTICA/ARCHITETTURE/</a></p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>Invalidation-based cache coherence protocols have been extensively studied in</code></pre>
+</div></div>
+<div class="paragraph"><p>Invalidation-based cache coherence protocols h</p></div>
+<div class="paragraph"><p>Invalidation-based cache coherence protocols h</p></div>
+<div class="paragraph"><p>Lockup-free cache design</p></div>
+<div class="paragraph"><p>CLUSTER BASED CACHE CONSISTENCY USING AGENT TECHNIQUE IN MOBILE ENVIRONMENT</p></div>
+<div class="paragraph"><p>Caching is an essential mechanism in mobile environment. Mobile node makes access dynamic changing data object to their server and to get the interested data to keep their own as local copies in the cache. If the server database is updated, the data cached in mobile client is invalidated and it becomes inconsistent between client and server. In this study we design the cluster based caching technique in mobile node, this technique improves data accessibility, reduces the query latency and easy to maintains cache consistency in mobile environment. Designed a Cluster head node in between the server and the client using agent technique. Cluster head is selected nearest to the center of the grid and full battery power among other nodes in the mobile environment. Simulation is done on NS2, result show that reduces update delay, reduces Query delay, high throughput, high energy level when compared with existing approaches Distributed Cache Invalidation Method (DCIM).</p></div>
+<div class="paragraph"><p>Transactional Data Caching
+query-shipping model
+data-shipping mode
+• intra transaction caching</p></div>
+<div class="paragraph"><p>inter transaction caching</p></div>
+<div class="paragraph"><p>Availability</p></div>
+<div class="paragraph"><p>C​a​c​h​e​ ​D​e​s​i​g​n​ ​a​n​d​ ​O​p​t​i​m​i​z​a​t​i​o​n</p></div>
+<div class="paragraph"><p><a href="http://wenku.baidu.com/view/99f10e0abb68a98271fefa0b.html">http://wenku.baidu.com/view/99f10e0abb68a98271fefa0b.html</a></p></div>
+<div class="paragraph"><p>Distributed Caching with Memcached | Linux Journal</p></div>
+<div class="paragraph"><p>Flash Memory for Storage Performance</p></div>
+<div class="paragraph"><p>Server-based Caching</p></div>
+<div class="paragraph"><p><a href="http://www.datacenterknowledge.com/archives/2012/11/02/a-distributed-caching-approach-to-server-based-storage-acceleration/">http://www.datacenterknowledge.com/archives/2012/11/02/a-distributed-caching-approach-to-server-based-storage-acceleration/</a>
+As currently deployed, server-based SSD caching:</p></div>
+<div class="paragraph"><p>Does not work for today’s most important clustered architectures and applications.
+Creates silos of captive SSDs that make SSD caching much more expensive to achieve a specified performance level.
+Necessitates complex layers of driver and caching software, which increases interoperability risks and consumes server processor and memory resources.
+Poses the threat of data corruption due to loss of cache coherence, which creates an unacceptable risk to data processing integrity.</p></div>
+<div class="paragraph"><p>write back write through</p></div>
+<div class="paragraph"><p>A New Approach</p></div>
+<div class="paragraph"><p>The industry has now produced a new solution that simultaneously eliminates the threat of data corruption due to loss of cache coherence, while enabling efficient and cost-effective scaling and pooling of SSD cache resources among servers.
+Independent of cluster control functions, pairs of cluster members can also cooperate to provide synchronous mirroring of cache or SSD data LUNs. In these relationships, only one member of the pair actively serves requests and synchronizes data to the mirror partner (that is, the mirroring relationship is active-passive).
+<a href="http://en.wikipedia.org/wiki/Distributed_cache">http://en.wikipedia.org/wiki/Distributed_cache</a>
+Cache algorithms
+Cache coherence
+Cache-oblivious algorithm
+Cache stampede
+Cache language model
+Database cache
+Cache manifest in HTML5
+References[edit]
+Jump up <sup> Paul, S; Z Fei (2001-02-01). "Distributed caching with centralized control". Computer Communications 24 (2): 256–268. doi:10.1016/S0140-3664(00)00322-4.
+Jump up </sup> Khan, Iqbal. "Distributed Caching On The Path To Scalability". MSDN (July 2009). Retrieved 2012-03-30.</p></div>
+<div class="paragraph"><p>Caching in the Distributed Environment</p></div>
+<div class="paragraph"><p><a href="http://msdn.microsoft.com/en-us/library/dd129907.aspx">http://msdn.microsoft.com/en-us/library/dd129907.aspx</a></p></div>
+<div class="paragraph"><p>用hash来分布缓存。。（不同内容）
+<a href="http://java.dzone.com/articles/process-caching-vs-distributed">http://java.dzone.com/articles/process-caching-vs-distributed</a>
+For a small, predictable number of preferably immutable objects that have to be read multiple times, an in-process cache is a good solution because it will perform better than a distributed cache. However, for cases in which the number of objects that can be or should be cached is unpredictable and large, and consistency of reads is a must-have, a distributed cache is perhaps a better solution even though it may not bring the same performance benefits as an in-process cache. It goes without saying that your application can use both schemes for different types of objects depending on what suits the scenario best.</p></div>
+<div class="paragraph"><p><a href="http://www.quora.com/Distributed-Caching/What-are-some-distributed-cache-systems">http://www.quora.com/Distributed-Caching/What-are-some-distributed-cache-systems</a>
+<a href="http://www.quora.com/Distributed-Systems/What-are-some-good-distributed-caching-systems-besides-Memcached">http://www.quora.com/Distributed-Systems/What-are-some-good-distributed-caching-systems-besides-Memcached</a>
+<a href="http://www.gridgain.com/blog/distributed-caching-is-dead-long-live/">http://www.gridgain.com/blog/distributed-caching-is-dead-long-live/</a></p></div>
+<div class="paragraph"><p>in-memory caching</p></div>
+<div class="paragraph"><p><a href="http://engineering.ticketbis.com/cache-system-internals/">http://engineering.ticketbis.com/cache-system-internals/</a>
+A Distributed Cache for Hadoop Distributed File System in Real-Time Cloud Services</p></div>
+<div class="paragraph"><p>pdf</p></div>
+<div class="paragraph"><p><a href="http://engineering.ticketbis.com/cache-system-internals/">http://engineering.ticketbis.com/cache-system-internals/</a>
+Failover and Failbac
+<a href="https://docs.tibco.com/pub/businessevents/5.0.0_april_2011/html/tib_be_architects_guide/wwhelp/wwhimpl/common/html/wwhelp.htm#context=tib_be_architects_guide&amp;file=objectmanagement.08.07.htm">https://docs.tibco.com/pub/businessevents/5.0.0_april_2011/html/tib_be_architects_guide/wwhelp/wwhimpl/common/html/wwhelp.htm#context=tib_be_architects_guide&amp;file=objectmanagement.08.07.htm</a></p></div>
+<div class="paragraph"><p>hdfs 中央缓存
+分布式缓存</p></div>
+<div class="paragraph"><p><a href="http://amberonrails.com/paxosmulti-paxos-algorithm/">http://amberonrails.com/paxosmulti-paxos-algorithm/</a>
+with lease</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>leader election
+multi-paxos</code></pre>
+</div></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>http://ayende.com/blog/4496/paxos-enlightment
+http://amberonrails.com/eventual-consistency/
+http://amberonrails.com/
+The part-time parliament</code></pre>
+</div></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>http://en.wikipedia.org/wiki/Paxos_(computer_science)</code></pre>
+</div></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>http://scalingsystems.com/2013/05/07/distributed-locking-when-to-use-it-how/
+在协调多个资源的情况下，用锁机制。</code></pre>
+</div></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>然后进行通信的判断。。lease／token</code></pre>
+</div></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>什么叫分布式锁呢？</code></pre>
+</div></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>DLM</code></pre>
+</div></div>
+<div class="paragraph"><p>M - Modified, E - Exclusive, S - Shared, I - Invalid)</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code> MESI lock-free
+lock-free cache arch</code></pre>
+</div></div>
+<div class="paragraph"><p><a href="http://lists.gnu.org/archive/html/gluster-devel/2014-02/msg00004.html">http://lists.gnu.org/archive/html/gluster-devel/2014-02/msg00004.html</a>
+<a href="http://en.wikipedia.org/wiki/MESI_protocol">http://en.wikipedia.org/wiki/MESI_protocol</a>
+<a href="http://en.wikipedia.org/wiki/Coherence_protocol">http://en.wikipedia.org/wiki/Coherence_protocol</a>
+<a href="http://en.wikipedia.org/wiki/MSI_protocol">http://en.wikipedia.org/wiki/MSI_protocol</a></p></div>
+<div class="paragraph"><p>lock-free cache</p></div>
+<div class="paragraph"><p>Lock-free algorithms: The opportunistic cache</p></div>
+<div class="paragraph"><p><a href="http://blogs.msdn.com/b/oldnewthing/archive/2011/04/14/10153633.aspx?Redirected=true">http://blogs.msdn.com/b/oldnewthing/archive/2011/04/14/10153633.aspx?Redirected=true</a>
+<a href="http://www.ebaytechblog.com/2011/08/30/high-throughput-thread-safe-lru-caching/#.U2dcjK2SxhU">http://www.ebaytechblog.com/2011/08/30/high-throughput-thread-safe-lru-caching/#.U2dcjK2SxhU</a></p></div>
+<div class="paragraph"><p><a href="http://www.drdobbs.com/cpp/lock-free-interprocess-communication/189401457">http://www.drdobbs.com/cpp/lock-free-interprocess-communication/189401457</a>
+ lock-free IPC</p></div>
+<div class="paragraph"><p>lock-free algo</p></div>
+<div class="paragraph"><p><a href="http://mechanical-sympathy.blogspot.com/2013/08/lock-based-vs-lock-free-concurrent.html">http://mechanical-sympathy.blogspot.com/2013/08/lock-based-vs-lock-free-concurrent.html</a></p></div>
+<div class="paragraph"><p><a href="http://www.rossbencina.com/code/lockfree">http://www.rossbencina.com/code/lockfree</a>
+<a href="http://www.justsoftwaresolutions.co.uk/threading/non_blocking_lock_free_and_wait_free.html">http://www.justsoftwaresolutions.co.uk/threading/non_blocking_lock_free_and_wait_free.html</a></p></div>
+<div class="paragraph"><p><a href="http://rethinkdb.com/blog/lock-free-vs-wait-free-concurrency/">http://rethinkdb.com/blog/lock-free-vs-wait-free-concurrency/</a></p></div>
+<div class="paragraph"><p>lock-free wait-free</p></div>
+<div class="paragraph"><p>Last week I attended a review session of the new JSR166 StampedLock run by Heinz Kabutz at the excellent JCrete unconference. StampedLock is an attempt to address the contention issues that arise in a system when multiple readers concurrently access shared state. StampedLock is designed to perform better than ReentrantReadWriteLock by taking an optimistic read approach.</p></div>
+<div class="paragraph"><p><a href="http://mechanical-sympathy.blogspot.com/2013/08/lock-based-vs-lock-free-concurrent.html">http://mechanical-sympathy.blogspot.com/2013/08/lock-based-vs-lock-free-concurrent.html</a></p></div>
+<div class="paragraph"><p>java /
+c
+nfs smba</p></div>
+<div class="paragraph"><p><a href="http://en.wikipedia.org/wiki/Server_Message_Block#Opportunistic_locking">http://en.wikipedia.org/wiki/Server_Message_Block#Opportunistic_locking</a></p></div>
+<div class="paragraph"><p>NFSv4 File Delegations
+NFS Directory Delegations
+draft-ietf-nfsv4-directory-delegation-01.txt
+Delegation in NFS Version 4</p></div>
+<div class="paragraph"><p><a href="https://github.com/nfs-ganesha/nfs-ganesha/wiki/NFSv4-Delegations">https://github.com/nfs-ganesha/nfs-ganesha/wiki/NFSv4-Delegations</a></p></div>
+<div class="paragraph"><p><a href="http://tools.ietf.org/html/draft-ietf-nfsv4-rfc3530bis-31">http://tools.ietf.org/html/draft-ietf-nfsv4-rfc3530bis-31</a>
+<a href="http://scalingsystems.com/2013/05/07/distributed-locking-when-to-use-it-how/">http://scalingsystems.com/2013/05/07/distributed-locking-when-to-use-it-how/</a>
+Implementing Paxos is challenging (to say the least). The algorithm found in this paper might be more practical:</p></div>
+<div class="paragraph"><p><a href="https://ramcloud.stanford.edu/wiki/download/attachments/11370504/raft.pdf">https://ramcloud.stanford.edu/wiki/download/attachments/11370504/raft.pdf</a></p></div>
+<div class="paragraph"><p>lock-free cache</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>lock-free IPC</code></pre>
+</div></div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Version 1.0<br />
+Last updated 2014-05-22 23:02:29 CST
+</div>
+</div>
+</body>
+</html>

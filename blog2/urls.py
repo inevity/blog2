@@ -16,7 +16,10 @@ urlpatterns = i18n_patterns('',
         {'sitemaps': {'cmspages': CMSSitemap}}),
     url(r'^select2/', include('django_select2.urls')),
 #    url(r'^polls/', include('polls.urls', namespace='polls')),
+#    url(r'^weblog/', include('zinnia.urls', namespace='zinnia')),
     url(r'^', include('cms.urls')),
+    url(r'^comments/', include('django_comments.urls')),
+
 )
 
 # This is only needed when using runserver.

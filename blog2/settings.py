@@ -77,11 +77,17 @@ STATICFILES_DIRS = (
 )
 SITE_ID = 1
 
+STATICFILES_FINDERS = [
+     'django.contrib.staticfiles.finders.FileSystemFinder',
+     'aldryn_boilerplates.staticfile_finders.AppDirectoriesFinder',
+     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+ ]
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'blog2', 'templates'),],
+#        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.contrib.auth.context_processors.auth',
@@ -94,12 +100,18 @@ TEMPLATES = [
     'django.core.context_processors.tz',
     'sekizai.context_processors.sekizai',
     'django.core.context_processors.static',
-    'cms.context_processors.cms_settings'
+    'cms.context_processors.cms_settings',
+    'django.template.context_processors.i18n',
+    'django.template.context_processors.request',
+    'aldryn_boilerplates.context_processors.boilerplate',
+    'zinnia.context_processors.version'
             ],
             'loaders': [
+                    'app_namespace.Loader',
                 'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-    'django.template.loaders.eggs.Loader'
+    'django.template.loaders.eggs.Loader',
+    'aldryn_boilerplates.template_loaders.AppDirectoriesLoader',
             ],
         },
     },
@@ -160,8 +172,26 @@ INSTALLED_APPS = (
     #'south',
     'polls',
     'menu_plugin',
+    'django_comments',
+    'mptt',
+    'tagging',
+    #'zinnia_bootstrap',
+    #'zinnia',
+    #'cmsplugin_zinnia',
+    'aldryn_apphooks_config',
+    'aldryn_boilerplates',
+    'aldryn_categories',
+    'aldryn_newsblog',
+    'aldryn_people',
+    'aldryn_reversion',
+    'parler',
+    'sortedm2m',
+    'taggit',
     'blog2'
 )
+
+ALDRYN_BOILERPLATE_NAME='bootstrap3'
+
 
 LANGUAGES = (
     ## Customize this
@@ -224,6 +254,7 @@ MIGRATION_MODULES = {
     'cmsplugin_filer_teaser': 'cmsplugin_filer_teaser.migrations_django',
     'cmsplugin_filer_video': 'cmsplugin_filer_video.migrations_django'    
 }
+
 THUMBNAIL_PROCESSORS = (
      'easy_thumbnails.processors.colorspace',
     'easy_thumbnails.processors.autocrop',
@@ -231,4 +262,19 @@ THUMBNAIL_PROCESSORS = (
     'filer.thumbnail_processors.scale_and_crop_with_subject_location',
     'easy_thumbnails.processors.filters',
 )
+
+CMSPLUGIN_ZINNIA_APP_URLS = ['zinnia.urls']
+
+CMSPLUGIN_ZINNIA_APP_MENUS =  ['cmsplugin_zinnia.menu.EntryMenu',
+ 'cmsplugin_zinnia.menu.CategoryMenu',
+ 'cmsplugin_zinnia.menu.TagMenu',
+ 'cmsplugin_zinnia.menu.AuthorMenu']
+
+CMSPLUGIN_ZINNIA_HIDE_ENTRY_MENU = True
+
+CMSPLUGIN_ZINNIA_TEMPLATES =  [ ]
+#CMSPLUGIN_ZINNIA_TEMPLATES = [
+#  ('entry_custom.html', 'Entry custom'),
+#  ('entry_custom_bis.html', 'Entry custom bis')
+#  ]
 
